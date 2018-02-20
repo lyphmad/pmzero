@@ -92,12 +92,14 @@
 
 		if ($conn->query($sql) === TRUE) {
 		    echo "<script>
-		    alert('New record created successfully');
-		    window.location.href='ranking_this_month.html';
+		    alert('등록되었습니다.');
+		    window.location.href='score_this_month.html';
 		    </script>";
 		} else {
 		    echo "Error: " . $sql . "<br>" . $conn->error;
 		}
+
+	$conn->close();
 	}
 	else {
 		echo "<script>
@@ -105,6 +107,4 @@
 		window.history.back();
 		</script>";
 	}
-
-	$conn->close();
 ?> 
