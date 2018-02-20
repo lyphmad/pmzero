@@ -59,12 +59,20 @@
 		if ($sum != 100000) {
 			die("Invalid input: sum not 100000\n");
 		}
+		
+		$name_wind = array(
+			$eastName => '동',
+			$southName => '남',
+			$westName => '서',
+			$northName => '북'
+		);
 
 		$temp = array(
 			array(0, $eastName, $eastScore),
 			array(1, $southName, $southScore),
 			array(2, $westName, $westScore),
-			array(3, $northName, $northScore));
+			array(3, $northName, $northScore)
+		);
 
 		uasort($temp, function($a, $b) {
 			 return $a[2] == $b[2] ? ($a[0] - $b[0]) : ($a[2] < $b[2] ? 1 : -1);
@@ -76,24 +84,27 @@
 		}
 
 		$names = array_keys($arr);
-		$scores = array_values($arr);
+		$score = array_values($arr);
+		for ($i=0; $i < 4; $i++) { 
+			$winds[$i] = $name_wind[$names[$i]];
+		}
 
 		$sql =
 			"INSERT INTO Games (
-				1stName, 1stScore,
-				2ndName, 2ndScore,
-				3rdName, 3rdScore,
-				4thName, 4thScore, leftover)
+				1stWind, 1stName, 1stScore,
+				2ndWind, 2ndName, 2ndScore,
+				3rdWind, 3rdName, 3rdScore,
+				4thWind, 4thName, 4thScore, leftover)
 			VALUES (
-				'$names[0]', $scores[0],
-				'$names[1]', $scores[1],
-				'$names[2]', $scores[2],
-				'$names[3]', $scores[3], $leftover)";
+				'$winds[0]', '$names[0]', $score[0],
+				'$winds[1]', '$names[1]', $score[1],
+				'$winds[2]', '$names[2]', $score[2],
+				'$winds[3]', '$names[3]', $score[3], $leftover)";
 
 		if ($conn->query($sql) === TRUE) {
 		    echo "<script>
 		    alert('등록되었습니다.');
-		    window.location.href='score_this_month.html';
+		    window.location.href='score_this_month.php';
 		    </script>";
 		} else {
 		    echo "Error: " . $sql . "<br>" . $conn->error;
