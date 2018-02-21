@@ -16,48 +16,65 @@
 <div style="background-color: #001c54; color: white">
   <button class="w3-button w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
   <div class="w3-container" style="background-color: #001c54;">
-    <h1>기록 입력</h1>
+    <h1>기록 수정</h1>
   </div>
 </div>
 
-<form method="get" action="record.php">
+<?php
+    // Create connection
+    $conn = new mysqli("localhost", "ubuntu", "", "pmzero");
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $conn->set_charset("utf8");
+
+    $gameID = $_GET["id"];
+
+    $results = $conn->query("SELECT * FROM Cache WHERE gameID = $gameID;");
+    $rowitem = $results->fetch_array();
+?>
+
+<form method="get" action="record_edit.php">
+  <input name="gameID" type="text" value="<?=$gameID?>" hidden>
 <div class="w3-container w3-row-padding">
-	<div class="w3-col"><h3>동</h3></div>
+	<div class="w3-col"><h3>1위</h3></div>
   	<div class="w3-quarter">
-  	  <input name="eastName" class="w3-input" type="text" placeholder="이름" required>
+  	  <input name="eastName" class="w3-input" type="text" value="<?=$rowitem['eastName']?>" required>
     </div>
     <div class="w3-quarter">
-      <input id="eastScore" name="eastScore" class="w3-input" type="text" onblur="getTotal()" value="0">
+      <input id="eastScore" name="eastScore" class="w3-input" type="text" onblur="getTotal()" value="<?=$rowitem['eastScore']?>">
     </div>
 </div>
 
 <div class="w3-container w3-row-padding">
 	<div class="w3-col"><h3>남</h3></div>
   	<div class="w3-quarter">
-  	  <input name="southName" class="w3-input" type="text" placeholder="이름" required>
+  	  <input name="southName" class="w3-input" type="text" value="<?=$rowitem['southName']?>" required>
     </div>
     <div class="w3-quarter">
-      <input id="southScore" name="southScore" class="w3-input" type="text" onblur="getTotal()" value="0">
+      <input id="southScore" name="southScore" class="w3-input" type="text" onblur="getTotal()" value="<?=$rowitem['southScore']?>">
     </div>
 </div>
 
 <div class="w3-container w3-row-padding">
 	<div class="w3-col"><h3>서</h3></div>
   	<div class="w3-quarter">
-  	  <input name="westName" class="w3-input" type="text" placeholder="이름" required>
+  	  <input name="westName" class="w3-input" type="text" value="<?=$rowitem['westName']?>" required>
     </div>
     <div class="w3-quarter">
-      <input id="westScore" name="westScore" class="w3-input" type="text" onblur="getTotal()" value="0">
+      <input id="westScore" name="westScore" class="w3-input" type="text" onblur="getTotal()" value="<?=$rowitem['westScore']?>">
     </div>
 </div>
 
 <div class="w3-container w3-row-padding">
 	<div class="w3-col"><h3>북</h3></div>
   	<div class="w3-quarter">
-  	  <input name="northName" class="w3-input" type="text" placeholder="이름" required>
+  	  <input name="northName" class="w3-input" type="text" value="<?=$rowitem['northName']?>" required>
     </div>
     <div class="w3-quarter">
-      <input id="northScore" name="northScore" class="w3-input" type="text" onblur="getTotal()" value="0">
+      <input id="northScore" name="northScore" class="w3-input" type="text" onblur="getTotal()" value="<?=$rowitem['northScore']?>">
     </div>
 </div>
 
@@ -66,7 +83,7 @@
   	<div class="w3-quarter">
     </div>
     <div class="w3-quarter">
-      <input id="leftover" name="leftover" class="w3-input" type="text" onblur="getTotal()" value="0">
+      <input id="leftover" name="leftover" class="w3-input" type="text" onblur="getTotal()" value="<?=$rowitem['leftover']?>">
     </div>
 </div>
 
@@ -80,7 +97,7 @@
 </div>
 
 <div class="w3-container w3-row-padding" style="margin-top: 10px; margin-left: 8px;">
-<input id="submit" class="w3-button w3-border" type="submit" value="기록 입력" disabled>
+<input id="submit" class="w3-button w3-border" type="submit" value="기록 입력">
 </div>
    
 </div>
@@ -108,6 +125,7 @@ function getTotal() {
 	if (left) { tot += left; }
 	document.getElementById('total').value = tot;
 	if (tot == 100000) { document.getElementById("submit").disabled = false; }
+  else { document.getElementById("submit").disabled = true; }
 }
 
 </script>

@@ -1,5 +1,5 @@
  <?php
- 	if (!empty($_GET["eastName"]) &&
+	if (!empty($_GET["eastName"]) &&
 		!empty($_GET["southName"]) &&
 		!empty($_GET["westName"]) &&
 		!empty($_GET["northName"])) {
@@ -17,6 +17,7 @@
 		$southName = $_GET["southName"];
 		$westName = $_GET["westName"];
 		$northName = $_GET["northName"];
+		$gameID = $_GET["gameID"];
 		
 		if (empty($_GET["eastScore"])) {
 			$eastScore = 0;
@@ -62,16 +63,12 @@
 			$northName => '북'
 		);
 
-		$sql = "INSERT INTO Cache (
-			eastName, eastScore,
-			southName, southScore,
-			westName, westScore,
-			northName, northScore, leftover)
-			VALUES (
-			'$eastName', $eastScore,
-			'$southName', $southScore,
-			'$westName', $westScore,
-			'$northName', $northScore, $leftover);";
+		$sql = "UPDATE Cache SET
+			eastName = '$eastName', eastScore = $eastScore,
+			southName = '$southName', southScore = $southScore,
+			westName = '$westName', westScore = $westScore,
+			northName = '$northName', northScore = $northScore, leftover = $leftover
+			WHERE gameID = $gameID;";
 
 		if ($conn->query($sql) === FALSE) {
 			die("Error: " . $sql . "<br>" . $conn->error);
@@ -99,21 +96,16 @@
 			$winds[$i] = $name_wind[$names[$i]];
 		}
 
-		$sql =
-			"INSERT INTO Games (
-				1stWind, 1stName, 1stScore,
-				2ndWind, 2ndName, 2ndScore,
-				3rdWind, 3rdName, 3rdScore,
-				4thWind, 4thName, 4thScore, leftover)
-			VALUES (
-				'$winds[0]', '$names[0]', $score[0],
-				'$winds[1]', '$names[1]', $score[1],
-				'$winds[2]', '$names[2]', $score[2],
-				'$winds[3]', '$names[3]', $score[3], $leftover);";
+		$sql = "UPDATE Games SET
+			1stWind = '$winds[0]', 1stName = '$names[0]', 1stScore = $score[0],
+			2ndWind = '$winds[1]', 2ndName = '$names[1]', 2ndScore = $score[1],
+			3rdWind = '$winds[2]', 3rdName = '$names[2]', 3rdScore = $score[2],
+			4thWind = '$winds[3]', 4thName = '$names[3]', 4thScore = $score[3],
+			leftover = $leftover WHERE gameID = $gameID;";
 
 		if ($conn->query($sql) === TRUE) {
 		    echo "<script>
-		    alert('등록되었습니다.');
+		    alert('수정되었습니다.');
 		    window.location.href='score_this_month.php';
 		    </script>";
 		} else {
