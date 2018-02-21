@@ -9,7 +9,7 @@
   <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
   <a href="score_this_month.php" class="w3-bar-item w3-button">이번 달 기록</a>
   <a href="record.html" class="w3-bar-item w3-button">기록 입력</a>
-  <a href="#" class="w3-bar-item w3-button">Link 3</a>
+  <a href="https://github.com/lyphmad/pmzero" class="w3-bar-item w3-button"> GitHub </a>
 </div>
 
 <div class="w3-main" style="margin-left:200px">
