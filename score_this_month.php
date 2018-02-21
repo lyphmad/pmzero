@@ -9,6 +9,7 @@
   <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
   <a href="score_this_month.php" class="w3-bar-item w3-button">이번 달 기록</a>
   <a href="record.html" class="w3-bar-item w3-button">기록 입력</a>
+  <a href="new_member.html" class="w3-bar-item w3-button">사용자 등록</a>
   <a href="https://github.com/lyphmad/pmzero" class="w3-bar-item w3-button"> GitHub </a>
 </div>
 
@@ -30,12 +31,14 @@ $conn->set_charset("utf8");
 
 $results = $conn->query(
 	"SELECT * FROM Games
-	WHERE valid = 1
+	WHERE MONTH(gameTime) = MONTH(NOW())
+	AND YEAR(gameTime) = YEAR(NOW())
+	AND valid = 1
 	ORDER BY gameTime DESC;"
 );
 ?>
 
-<table class="w3-table-all" style="align-left;">
+<table class="w3-table-all">
 
 	<tr style="background-color: #43c1c3; color: white;">
 		<th nowrap>일시</th>
@@ -48,7 +51,8 @@ $results = $conn->query(
 		<th nowrap></th>
 	</tr>
 
-<?php while ($rowitem = $results->fetch_array()) { ?>
+<?php 
+while ($rowitem = $results->fetch_array()) { ?>
 	<tr>
 		<td nowrap> <?=$rowitem['gameTime']?> </td>
 		<td nowrap> [<?=$rowitem['1stWind']?>] <?=$rowitem['1stName']?>: <?=$rowitem['1stScore']?> </td>
@@ -59,7 +63,11 @@ $results = $conn->query(
 		<td nowrap style='color:blue;'> <ins> <a href='edit.php?id=<?=$rowitem['gameID']?>'>수정</a> </ins> </td>
 		<td nowrap style='color:blue;'> <ins> <a href='#' onclick="delete_button(<?=$rowitem['gameID']?>)">삭제</a> </ins> </td>
 	</tr>
-<?php } ?>
+<?php 
+} 
+
+$conn->close();
+?>
 
 </table>
 </div>
