@@ -34,7 +34,7 @@
 			);
 			?>
 
-			<div style="overflow-x:scroll;">
+			<div style="overflow-x:auto;">
 				<table class="w3-table-all">
 					<tr style="background-color: #43c1c3; color: white;">
 						<th nowrap>일시</th>
