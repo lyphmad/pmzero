@@ -4,7 +4,7 @@ if (!empty($_GET["eastName"]) &&
 	!empty($_GET["westName"]) &&
 	!empty($_GET["northName"])) {
 	// Create connection
-		$conn = new mysqli("localhost", "ubuntu", "", "pmzero");
+	$conn = new mysqli("localhost", "ubuntu", "", "pmzero");
 	// Check connection
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);

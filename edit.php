@@ -2,15 +2,11 @@
 <html>
 	<title>UNIST 마작 소모임 ±0</title>
 	<meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="w3.css">
 
 	<body>    
-		<div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:200px; background-color: #001c54; color: white;" id="mySidebar">
-			<button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
-			<a href="score_this_month.php" class="w3-bar-item w3-button">이번 달 기록</a>
-			<a href="record.html" class="w3-bar-item w3-button">기록 입력</a>
-			<a href="new_member.html" class="w3-bar-item w3-button">사용자 등록</a>
-			<a href="https://github.com/lyphmad/pmzero" class="w3-bar-item w3-button" target="_blank" style="margin-top:100px;"> GitHub </a>
+		<div class="w3-sidebar w3-bar-block w3-collapse w3-card sidebar" id="mySidebar">
+			<div w3-include-html="menubar.html"></div>
 		</div>
 
 		<div class="w3-main" style="margin-left:200px">
@@ -101,7 +97,31 @@
 			</form>
 		</div>
 
+		<style>
+			.sidebar {
+				width: 200px;
+				background-color: #001c54;
+				color: white;
+			}
+			
+			@media (max-width:800px) {
+				.sidebar {
+					width: 100%;
+					position: relative;
+					animation: animateleft 0.4s;
+					margin-left: 20px;
+				}
+			}
+
+			@keyframes animateleft {
+				from { left:-300px; opacity:0; }
+				to { left:0; opacity:1; }
+			}
+		</style>
+
+		<script src="https://www.w3schools.com/lib/w3.js"></script> 
 		<script>
+			w3.includeHTML();
 			function w3_open() {
 					document.getElementById("mySidebar").style.display = "block";
 			}
