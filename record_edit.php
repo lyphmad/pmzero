@@ -7,7 +7,7 @@ if (!empty($_GET["eastName"]) &&
 		$conn = new mysqli("localhost", "ubuntu", "", "pmzero");
 	// Check connection
 	if ($conn->connect_error) {
-			die("Connection failed: " . $conn->connect_error);
+		die("Connection failed: " . $conn->connect_error);
 	}
 
 	$conn->set_charset("utf8");

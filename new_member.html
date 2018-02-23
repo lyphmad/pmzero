@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <title>UNIST 마작 소모임 ±0</title>
-  <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<title>UNIST 마작 소모임 ±0</title>
+	<meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-  <body>    
-    <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:200px; background-color: #001c54; color: white;" id="mySidebar">
-      <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
-      <a href="score_this_month.php" class="w3-bar-item w3-button">이번 달 기록</a>
-      <a href="record.html" class="w3-bar-item w3-button">기록 입력</a>
-      <a href="new_member.html" class="w3-bar-item w3-button">사용자 등록</a>
-      <a href="https://github.com/lyphmad/pmzero" class="w3-bar-item w3-button" target="_blank" style="margin-top:100px;"> GitHub </a>
-    </div>
+	<body>    
+		<div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:200px; background-color: #001c54; color: white;" id="mySidebar">
+			<button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
+			<a href="score_this_month.php" class="w3-bar-item w3-button">이번 달 기록</a>
+			<a href="record.html" class="w3-bar-item w3-button">기록 입력</a>
+			<a href="new_member.html" class="w3-bar-item w3-button">사용자 등록</a>
+			<a href="https://github.com/lyphmad/pmzero" class="w3-bar-item w3-button" target="_blank" style="margin-top:100px;"> GitHub </a>
+		</div>
 
-    <div class="w3-main" style="margin-left:200px">
-      <div style="background-color: #001c54; color: white">
-        <button class="w3-button w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
-        <div class="w3-container">
-          <h1>사용자 등록</h1>
-        </div>
-      </div>
+		<div class="w3-main" style="margin-left:200px">
+			<div style="background-color: #001c54; color: white">
+				<button class="w3-button w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
+				<div class="w3-container">
+					<h1>사용자 등록</h1>
+				</div>
+			</div>
 
-      <form method="get" action="new_member.php">
-        <div class="w3-container w3-row-padding">
-          <div class="w3-quarter">
-            <input name="name" class="w3-input" type="text" placeholder="이름" required>
-          </div>
-        </div>
+			<form method="get" action="new_member.php">
+				<div class="w3-container w3-row-padding">
+					<div class="w3-quarter">
+						<input name="name" class="w3-input" type="text" placeholder="이름" required>
+					</div>
+				</div>
 
-        <div class="w3-container w3-row-padding" style="margin-top: 10px; margin-left: 8px;">
-          <input id="submit" class="w3-button w3-border" type="submit" value="등록">
-        </div>
-      </form>        
-    </div>
+				<div class="w3-container w3-row-padding" style="margin-top: 10px; margin-left: 8px;">
+					<input id="submit" class="w3-button w3-border" type="submit" value="등록">
+				</div>
+			</form>        
+		</div>
 
-    <script>
-      function w3_open() {
-          document.getElementById("mySidebar").style.display = "block";
-      }
-      function w3_close() {
-          document.getElementById("mySidebar").style.display = "none";
-      }
-    </script>
-  </body>
+		<script>
+			function w3_open() {
+					document.getElementById("mySidebar").style.display = "block";
+			}
+			function w3_close() {
+					document.getElementById("mySidebar").style.display = "none";
+			}
+		</script>
+	</body>
 </html>
