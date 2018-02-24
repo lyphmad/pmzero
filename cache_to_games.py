@@ -53,7 +53,7 @@ update_games = (
   "2ndWind = %s, 2ndName = %s, 2ndScore = %s, "
   "3rdWind = %s, 3rdName = %s, 3rdScore = %s, "
   "4thWind = %s, 4thName = %s, 4thScore = %s, "
-  "leftover = %s, valid = 1;"
+  "leftover = %s, valid = 1 WHERE gameID = %s;"
 )
 
 update_cache_edited = ("UPDATE Cache SET edited = 0 WHERE gameID = %s;")
@@ -77,7 +77,8 @@ for (gameID, gameTime, eastName, eastScore, southName, southScore, westName, wes
     players_sorted[0][0], players_sorted[0][1], players_sorted[0][2], 
     players_sorted[1][0], players_sorted[1][1], players_sorted[1][2], 
     players_sorted[2][0], players_sorted[2][1], players_sorted[2][2], 
-    players_sorted[3][0], players_sorted[3][1], players_sorted[3][2], leftover))
+    players_sorted[3][0], players_sorted[3][1], players_sorted[3][2],
+    leftover, gameID))
 
   insert_update.execute(update_cache_edited, (gameID,))
 

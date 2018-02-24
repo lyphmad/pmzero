@@ -50,7 +50,7 @@ $sql = "UPDATE Cache SET
 	southName = '$southName', southScore = $southScore,
 	westName = '$westName', westScore = $westScore,
 	northName = '$northName', northScore = $northScore,
-	leftover = $leftover, written = 0
+	leftover = $leftover, edited = 1
 	WHERE gameID = $gameID;";
 
 if ($conn->query($sql) === TRUE) {

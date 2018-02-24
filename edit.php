@@ -36,7 +36,7 @@
 				<input name="gameID" type="text" value="<?=$gameID?>" hidden>
 
 				<div class="w3-container w3-row-padding">
-					<div class="w3-col"><h3>1위</h3></div>
+					<div class="w3-col"><h3>동</h3></div>
 					<div class="w3-quarter">
 						<input name="eastName" class="w3-input" type="text" value="<?=$rowitem['eastName']?>" required>
 					</div>
