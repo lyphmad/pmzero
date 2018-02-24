@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 $name = $_GET['name'];
 
@@ -8,7 +9,7 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO Players (name) VALUES ('$name');";
+$sql = "INSERT INTO Members (name) VALUES ('$name');";
 
 if ($conn->query($sql) === TRUE) {
 	echo "<script>
@@ -16,7 +17,10 @@ if ($conn->query($sql) === TRUE) {
 	window.location.href='record.html';
 	</script>";
 } else {
-	die("Error: " . $sql . "<br>" . $conn->error);
+	echo "<script>
+	alert('등록에 실패하였습니다. 이미 등록된 이름이 아닌지 다시 확인해 주세요.');
+	window.location.href='new_member.html';
+	</script>";
 }
 
 $conn->close();
