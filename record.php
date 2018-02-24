@@ -22,7 +22,8 @@ $sql = "INSERT INTO Cache SET
 	eastName = '$eastName', eastScore = $eastScore,
 	southName = '$southName', southScore = $southScore,
 	westName = '$westName', westScore = $westScore,
-	northName = '$northName', northScore = $northScore, leftover = $leftover;";
+	northName = '$northName', northScore = $northScore,
+	leftover = $leftover, written = 0;";
 
 if ($conn->query($sql) === TRUE) {
 	echo "<script>
