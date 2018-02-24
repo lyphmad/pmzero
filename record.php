@@ -8,22 +8,49 @@ if ($conn->connect_error) {
 
 $conn->set_charset("utf8");
 
+$gameID = $_GET["gameID"];
 $eastName = $_GET["eastName"];
-$eastScore = $_GET["eastScore"];
 $southName = $_GET["southName"];
-$southScore = $_GET["southScore"];
 $westName = $_GET["westName"];
-$westScore = $_GET["westScore"];
 $northName = $_GET["northName"];
-$northScore = $_GET["northScore"];
-$leftover = $_GET["leftover"];
+
+if (empty($_GET["eastScore"])) {
+	$eastScore = 0;
+}
+else {
+	$eastScore = $_GET["eastScore"];
+}
+if (empty($_GET["southScore"])) {
+	$southScore = 0;
+}
+else {
+	$southScore = $_GET["southScore"];
+}
+if (empty($_GET["westScore"])) {
+	$westScore = 0;
+}
+else {
+	$westScore = $_GET["westScore"];
+}
+if (empty($_GET["northScore"])) {
+	$northScore = 0;
+}
+else {
+	$northScore = $_GET["northScore"];
+}
+if (empty($_GET["northScore"])) {
+	$leftover = 0;
+}
+else {
+	$leftover = $_GET["leftover"];
+}
 
 $sql = "INSERT INTO Cache SET
 	eastName = '$eastName', eastScore = $eastScore,
 	southName = '$southName', southScore = $southScore,
 	westName = '$westName', westScore = $westScore,
 	northName = '$northName', northScore = $northScore,
-	leftover = $leftover, written = 0;";
+	leftover = $leftover, new = 1;";
 
 if ($conn->query($sql) === TRUE) {
 	echo "<script>
