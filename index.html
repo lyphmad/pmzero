@@ -5,9 +5,7 @@
 	<link rel="stylesheet" href="w3.css">
 
 	<body>    
-		<div class="w3-sidebar w3-bar-block w3-collapse w3-card sidebar" id="mySidebar">
-			<div w3-include-html="menubar.html"></div>
-		</div>
+		<div w3-include-html="menubar.html"></div>
 
 		<div class="w3-main" style="margin-left:200px">
 			<div style="background-color: #001c54; color: white" scrolling="NO">
@@ -20,28 +18,6 @@
 			<!--  INSERT HERE  !-->
 
 		</div>
-
-		<style>
-			.sidebar {
-				width: 200px;
-				background-color: #001c54;
-				color: white;
-			}
-			
-			@media (max-width:800px) {
-				.sidebar {
-					width: 100%;
-					position: relative;
-					animation: animateleft 0.4s;
-					margin-left: 20px;
-				}
-			}
-
-			@keyframes animateleft {
-				from { left:-300px; opacity:0; }
-				to { left:0; opacity:1; }
-			}
-		</style>
 
 		<script src="https://www.w3schools.com/lib/w3.js"></script> 
 		<script>
