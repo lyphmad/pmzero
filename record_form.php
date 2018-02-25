@@ -37,7 +37,7 @@ while ($rowitem = $result->fetch_array()) {
 				<div class="row">
 					<div class="w3-container w3-cell wind"><h3>동</h3></div>
 					<div class="w3-container w3-cell" style="width:130px;">
-						<select name="eastName" style="width:100%;" autocomplete="off">
+						<select name="eastName" style="width:100%;" autocomplete="off" required>
 							<option selected disabled>이름</option>
 							<?php
 							foreach ($arr as $name) {
@@ -54,7 +54,7 @@ while ($rowitem = $result->fetch_array()) {
 				<div class="row">
 					<div class="w3-container w3-cell wind"><h3>남</h3></div>
 					<div class="w3-container w3-cell" style="width:130px;">
-						<select name="southName" style="width:100%;" autocomplete="off">
+						<select name="southName" style="width:100%;" autocomplete="off" required>
 							<option selected disabled>이름</option>
 							<?php
 							foreach ($arr as $name) {
@@ -71,7 +71,7 @@ while ($rowitem = $result->fetch_array()) {
 				<div class="row">
 					<div class="w3-container w3-cell wind"><h3>서</h3></div>
 					<div class="w3-container w3-cell" style="width:130px;">
-						<select name="westName" style="width:100%;" autocomplete="off">
+						<select name="westName" style="width:100%;" autocomplete="off" required>
 							<option selected disabled>이름</option>
 							<?php
 							foreach ($arr as $name) {
@@ -88,7 +88,7 @@ while ($rowitem = $result->fetch_array()) {
 				<div class="row">
 					<div class="w3-container w3-cell wind"><h3>북</h3></div>
 					<div class="w3-container w3-cell" style="width:130px;">
-						<select name="northName" style="width:100%;" autocomplete="off">
+						<select name="northName" style="width:100%;" autocomplete="off" required>
 							<option selected disabled>이름</option>
 							<?php
 							foreach ($arr as $name) {
@@ -124,13 +124,7 @@ while ($rowitem = $result->fetch_array()) {
 			</form>     
 		</div>
 
-		<style>
-			.sidebar {
-				width: 200px;
-				background-color: #001c54;
-				color: white;
-			}
-			
+		<style>			
 			.w3-container {
 				vertical-align: middle;
 			}
@@ -143,20 +137,6 @@ while ($rowitem = $result->fetch_array()) {
 			
 			.wind {
 				padding-right: 50px;
-			}
-			
-			@media (max-width:800px) {
-				.sidebar {
-					width: 100%;
-					position: relative;
-					animation: animateleft 0.4s;
-					margin-left: 20px;
-				}
-			}
-
-			@keyframes animateleft {
-				from { left:-800px; opacity:0; }
-				to { left:0; opacity:1; }
 			}
 		</style>
 

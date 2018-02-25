@@ -14,7 +14,7 @@ $sql = "INSERT INTO Members (name) VALUES ('$name');";
 if ($conn->query($sql) === TRUE) {
 	echo "<script>
 	alert('등록되었습니다.');
-	window.location.href='record.html';
+	window.location.href='record_form.php';
 	</script>";
 } else {
 	echo "<script>

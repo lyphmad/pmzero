@@ -8,7 +8,7 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "UPDATE Games SET valid = 0 WHERE gameID = $gameID;";
+$sql = "UPDATE Cache SET deleted = 1 WHERE gameID = $gameID;";
 
 if ($conn->query($sql) === TRUE) {
 	echo "<script>

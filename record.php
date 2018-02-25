@@ -50,7 +50,7 @@ $sql = "INSERT INTO Cache SET
 	southName = '$southName', southScore = $southScore,
 	westName = '$westName', westScore = $westScore,
 	northName = '$northName', northScore = $northScore,
-	leftover = $leftover, new = 1;";
+	leftover = $leftover, new = 1, edited = 0, deleted = 0";
 
 if ($conn->query($sql) === TRUE) {
 	echo "<script>

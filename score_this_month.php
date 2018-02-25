@@ -15,6 +15,10 @@
 				</div>
 			</div>
 
+			<div class="w3-col w3-container">
+				<p style="color:red;"><b>변경사항을 적용하는 데 시간이 조금 걸릴 수 있으니 잠시 기다린 후 새로고침 해주세요!</b></p>
+			</div>
+
 			<?php
 			$conn = new mysqli("localhost", "ubuntu", "", "pmzero");
 			if ($conn->connect_error) {
@@ -32,7 +36,7 @@
 			);
 			?>
 
-			<div style="overflow-x:auto;">
+			<div class="w3-container" style="overflow-x:auto;">
 				<table class="w3-table-all">
 					<tr style="background-color: #43c1c3; color: white;">
 						<th nowrap>일시</th>
@@ -77,7 +81,7 @@
 				document.getElementById("mySidebar").style.display = "none";
 			}
 			function delete_button(gameID) {
-				if (confirm("삭제된 기록은 복구할 수 없습니다.\n 정말 삭제하시겠습니까?")) {
+				if (confirm("삭제된 기록은 복구할 수 없습니다.\n정말 삭제하시겠습니까?")) {
 					window.location.href='delete.php?id=' + gameID;
 				}
 			}
