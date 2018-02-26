@@ -10,13 +10,13 @@ def create_or_update(table, name, score, place, pm):
   cursor = cnx.cursor()
   cursor.execute("insert ignore into `{}` set name = '{}';".format(table, name.encode('utf-8')))
   if place == 1:
-    cursor.execute("update `{}` set score = score + {}, first = first + {}, total = total + {} where name = '{}';".format(table, score, pm, pm, name.encode('utf-8')))
+    cursor.execute("update `{}` set score = score + {}, first = first + {}, total = total + {} where name = '{}';".format(table, score / 1000 + 10, pm, pm, name.encode('utf-8')))
   elif place == 2:
-    cursor.execute("update `{}` set score = score + {}, second = second + {}, total = total + {} where name = '{}';".format(table, score, pm, pm, name.encode('utf-8')))
+    cursor.execute("update `{}` set score = score + {}, second = second + {}, total = total + {} where name = '{}';".format(table, score / 1000 - 20, pm, pm, name.encode('utf-8')))
   elif place == 3:
-    cursor.execute("update `{}` set score = score + {}, third = third + {}, total = total + {} where name = '{}';".format(table, score, pm, pm, name.encode('utf-8')))
+    cursor.execute("update `{}` set score = score + {}, third = third + {}, total = total + {} where name = '{}';".format(table, score / 1000 - 40, pm, pm, name.encode('utf-8')))
   elif place == 4:
-    cursor.execute("update `{}` set score = score + {}, fourth = fourth + {}, total = total + {} where name = '{}';".format(table, score, pm, pm, name.encode('utf-8')))
+    cursor.execute("update `{}` set score = score + {}, fourth = fourth + {}, total = total + {} where name = '{}';".format(table, score / 1000 - 50, pm, pm, name.encode('utf-8')))
 
   return
 
