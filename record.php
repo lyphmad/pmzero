@@ -38,7 +38,7 @@ if (empty($_GET["northScore"])) {
 else {
 	$northScore = $_GET["northScore"];
 }
-if (empty($_GET["northScore"])) {
+if (empty($_GET["leftover"])) {
 	$leftover = 0;
 }
 else {

@@ -28,16 +28,16 @@ while ($rowitem = $result->fetch_array()) {
 		<div class="w3-main" style="margin-left:200px">
 			<div style="background-color: #001c54; color: white;">
 				<button class="w3-button w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
-				<div class="w3-container">
+				<div class="w3-container" style="margin-left:10px;">
 					<h1>기록 입력</h1>
 				</div>
 			</div>
 
 			<form method="get" action="record.php">
-				<div class="row">
-					<div class="w3-container w3-cell wind"><h3>동</h3></div>
-					<div class="w3-container w3-cell" style="width:130px;">
-						<select name="eastName" style="width:100%;" autocomplete="off" required>
+				<div class="w3-cell-row" style="width:50%;">
+					<div class="w3-container w3-cell"><h3>동</h3></div>
+					<div class="w3-container w3-cell">
+						<select name="eastName" autocomplete="off" required>
 							<option selected disabled>이름</option>
 							<?php
 							foreach ($arr as $name) {
@@ -112,7 +112,7 @@ while ($rowitem = $result->fetch_array()) {
 				<div class="row">
 					<div class="w3-container w3-cell" style="padding-right: 155px;"><h3>합계</h3></div>
 					<div class="w3-container w3-cell w3-mobile">
-						<input id="total" name="total" class="w3-input" type="text" disabled value="0" autocomplete="off">
+						<output id="total" type="text" class="w3-input" style="width:100%;" value="0">
 					</div>
 				</div>
 				

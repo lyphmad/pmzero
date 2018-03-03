@@ -47,6 +47,7 @@
 						<th nowrap>공탁</th>
 						<th nowrap></th>
 						<th nowrap></th>
+						<th nowrap></th>
 					</tr>
 
 				<?php 
@@ -59,8 +60,9 @@
 						<td nowrap> [<?=$rowitem['3rdWind']?>] <?=$rowitem['3rdName']?>: <?=$rowitem['3rdScore']?> </td>
 						<td nowrap> [<?=$rowitem['4thWind']?>] <?=$rowitem['4thName']?>: <?=$rowitem['4thScore']?> </td>
 						<td nowrap> <?=$rowitem['leftover']?> </td>
-						<td nowrap style='color:blue;'> <ins> <a href='edit.php?id=<?=$rowitem['gameID']?>'>수정</a> </ins> </td>
+						<td nowrap style='color:blue;'> <ins> <a href='edit_form.php?id=<?=$rowitem['gameID']?>'>수정</a> </ins> </td>
 						<td nowrap style='color:blue;'> <ins> <a href='#' onclick="delete_button(<?=$rowitem['gameID']?>)">삭제</a> </ins> </td>
+						<td nowrap style='color:blue;'> <ins> <a href='chicken_form.php?id=<?=$rowitem['gameID']?>'>역만</a> </ins> </td>
 					</tr>
 				<?php 
 				} 
