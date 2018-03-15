@@ -78,6 +78,36 @@
 				</div>
 
 				<div class="row">
+					<div class="w3-container w3-cell">
+						<select name="gyoku" autocomplete="off" required>
+							<option value="1">동1국</option>
+							<option value="2">동2국</option>
+							<option value="3">동3국</option>
+							<option value="4">동4국</option>
+							<option value="5">남1국</option>
+							<option value="6">남2국</option>
+							<option value="7">남3국</option>
+							<option value="8">남4국</option>
+							<option value="0">서1국 이후</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="w3-container w3-cell">
+						<input type="radio" name="ron" value="0" checked>쯔모
+						<input type="radio" name="ron" value="1">론
+						<select name="loser" autocomplete="off">
+							<option selected disabled>방총자</option>
+							<option value="<?=$names[0]?>">1위: <?=$names[0]?></option>
+							<option value="<?=$names[1]?>">2위: <?=$names[1]?></option>
+							<option value="<?=$names[2]?>">3위: <?=$names[2]?></option>
+							<option value="<?=$names[3]?>">4위: <?=$names[3]?></option>
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
 					<div class="w3-container w3-cell" style="padding-right: 50px;"><h3>비고</h3></div>
 					<div class="w3-container w3-cell w3-mobile">
 						<input name="remarks" class="w3-input" placeholder="헤아림 역만 상세, 관전자, 방총자 등 특기사항">
