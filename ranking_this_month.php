@@ -17,14 +17,15 @@
 
 		<?php
 		// Create connection
-		$conn = new mysqli("localhost", "ubuntu", "", "pmzero");
+		$conn = new mysqli("localhost", "openvpnas", "", "pmzero");
 		// Check connection
 		if ($conn->connect_error) {
 				die("Connection failed: " . $conn->connect_error);
 		}
 
+		$conn->set_charset("utf8");
+
 		$players = array();
-		$year_month = date("Ym");
 		$results = $conn->query("SELECT * FROM Month_ranking_".date("Ym")." ORDER BY `score` DESC;");
 
 		$conn->close();

@@ -1,6 +1,6 @@
 <?php
 // Create connection
-$conn = new mysqli("localhost", "ubuntu", "", "pmzero");
+$conn = new mysqli("localhost", "openvpnas", "", "pmzero");
 // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
@@ -34,71 +34,43 @@ while ($rowitem = $result->fetch_array()) {
 			</div>
 
 			<form method="get" action="record.php">
-				<div class="w3-cell-row" style="width:50%;">
-					<div class="w3-container w3-cell"><h3>동</h3></div>
-					<div class="w3-container w3-cell">
-						<select name="eastName" autocomplete="off" required>
-							<option selected disabled>이름</option>
-							<?php
-							foreach ($arr as $name) {
-								echo '<option value="'.$name.'">'.$name.'</option>';
-							}
-							?>
-						</select>
+				<div class="row">
+					<div class="w3-container w3-cell wind"><h3>동</h3></div>
+					<div class="w3-container w3-cell" style="width:130px;">
+						<input id="eastName" name="eastName" class="w3-input" type="text" placeholder="이름">
 					</div>
 					<div class="w3-container w3-cell w3-mobile">
-						<input id="eastScore" name="eastScore" class="w3-input" type="text" onblur="getTotal()" value="0" autocomplete="off">
+						<input id="eastScore" name="eastScore" class="w3-input" type="text" onblur="getTotal()" placeholder="점수" autocomplete="off">
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="w3-container w3-cell wind"><h3>남</h3></div>
 					<div class="w3-container w3-cell" style="width:130px;">
-						<select name="southName" style="width:100%;" autocomplete="off" required>
-							<option selected disabled>이름</option>
-							<?php
-							foreach ($arr as $name) {
-								echo '<option value="'.$name.'">'.$name.'</option>';
-							}
-							?>
-						</select>
+						<input id="southName" name="southName" class="w3-input" type="text" placeholder="이름">
 					</div>
 					<div class="w3-container w3-cell w3-mobile">
-						<input id="southScore" name="southScore" class="w3-input" type="text" onblur="getTotal()" value="0" autocomplete="off">
+						<input id="southScore" name="southScore" class="w3-input" type="text" onblur="getTotal()" placeholder="점수" autocomplete="off">
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="w3-container w3-cell wind"><h3>서</h3></div>
 					<div class="w3-container w3-cell" style="width:130px;">
-						<select name="westName" style="width:100%;" autocomplete="off" required>
-							<option selected disabled>이름</option>
-							<?php
-							foreach ($arr as $name) {
-								echo '<option value="'.$name.'">'.$name.'</option>';
-							}
-							?>
-						</select>
+						<input id="westName" name="westName" class="w3-input" type="text" placeholder="이름">
 					</div>
 					<div class="w3-container w3-cell w3-mobile">
-						<input id="westScore" name="westScore" class="w3-input" type="text" onblur="getTotal()" value="0" autocomplete="off">
+						<input id="westScore" name="westScore" class="w3-input" type="text" onblur="getTotal()" placeholder="점수" autocomplete="off">
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="w3-container w3-cell wind"><h3>북</h3></div>
 					<div class="w3-container w3-cell" style="width:130px;">
-						<select name="northName" style="width:100%;" autocomplete="off" required>
-							<option selected disabled>이름</option>
-							<?php
-							foreach ($arr as $name) {
-								echo '<option value="'.$name.'">'.$name.'</option>';
-							}
-							?>
-						</select>
+						<input id="northName" name="northName" class="w3-input" type="text" placeholder="이름">
 					</div>
 					<div class="w3-container w3-cell w3-mobile">
-						<input id="northScore" name="northScore" class="w3-input" type="text" onblur="getTotal()" value="0" autocomplete="off">
+						<input id="northScore" name="northScore" class="w3-input" type="text" onblur="getTotal()" placeholder="점수" autocomplete="off">
 					</div>
 				</div>
 

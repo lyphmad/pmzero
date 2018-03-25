@@ -20,7 +20,7 @@ def create_or_update(table, name, score, place, pm):
 
 	return
 
-cnx = mysql.connector.connect(user = 'ubuntu', database = 'pmzero')
+cnx = mysql.connector.connect(user = 'openvpnas', database = 'pmzero')
 not_select = cnx.cursor()
 
 # new records
@@ -155,9 +155,9 @@ for (gameID, gameTime, eastName, eastScore, southName, southScore, westName, wes
 
 	cnx.commit()
 
-#delete members who played 0 games (after deletion)
-not_select.execute("delete from Career_ranking where total = 0;")
-not_select.execute("delete from Month_ranking_{} where total = 0;".format(year_month))
+	#delete members who played 0 games (after deletion)
+	not_select.execute("delete from Career_ranking where total = 0;")
+	not_select.execute("delete from Month_ranking_{} where total = 0;".format(year_month))
 
 cnx.commit()
 

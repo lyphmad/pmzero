@@ -14,43 +14,25 @@
 					<h1>역만 입력</h1>
 				</div>
 			</div>
-
-			<?php
-			// Create connection
-			$conn = new mysqli("localhost", "ubuntu", "", "pmzero");
-			// Check connection
-			if ($conn->connect_error) {
-					die("Connection failed: " . $conn->connect_error);
-			}
-
-			$gameID = $_GET['id'];
-
-			$results = $conn->query("SELECT 1stName, 2ndName, 3rdName, 4thName FROM Games WHERE gameID = $gameID;");
-			if($rowitem = $results->fetch_array()) {
-				$names = array($rowitem['1stName'], $rowitem['2ndName'], $rowitem['3rdName'], $rowitem['4thName']);
-			}
-
-			$conn->close();
-			?>
+			
 			<form method="POST" action="chicken.php" enctype="multipart/form-data">
-				<input name="id" value="<?=$gameID?>" hidden>
-
 				<div class="row">
-					<div class="w3-container w3-cell" style="padding-right: 50px;"><h3>화료자</h3></div>
 					<div class="w3-container w3-cell">
-						<select name="maker" autocomplete="off" required>
-							<option selected value="<?=$names[0]?>">1위: <?=$names[0]?></option>
-							<option value="<?=$names[1]?>">2위: <?=$names[1]?></option>
-							<option value="<?=$names[2]?>">3위: <?=$names[2]?></option>
-							<option value="<?=$names[3]?>">4위: <?=$names[3]?></option>
-						</select>
+						<input id="maker" name="maker" class="w3-input" type="text" placeholder="화료자">
+						<input type="radio" name="ron" value="0" onclick="disable_loser()">쯔모
+						<input type="radio" name="ron" value="1" onclick="enable_loser()">론
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="w3-container w3-cell" style="padding-right: 50px;"><h3>화료 역</h3></div>
+					<div class="w3-container w3-cell">
+						<input id="loser" name="loser" class="w3-input" type="text" placeholder="방총자">
+					</div>
+				</div>
+
+				<div class="row">
 					<div class="w3-container w3-cell w3-mobile">
-						<input name="type" class="w3-input" type="text" placeholder="종류" list="type_list" required autocomplete="off">
+						<input name="type" class="w3-input" type="text" placeholder="화료역" list="type_list" required autocomplete="off">
 						<datalist id="type_list">
 							<option value="구련보등">
 							<option value="순정구련보등">
@@ -94,30 +76,16 @@
 				</div>
 
 				<div class="row">
-					<div class="w3-container w3-cell">
-						<input type="radio" name="ron" value="0" checked>쯔모
-						<input type="radio" name="ron" value="1">론
-						<select name="loser" autocomplete="off">
-							<option selected disabled>방총자</option>
-							<option value="<?=$names[0]?>">1위: <?=$names[0]?></option>
-							<option value="<?=$names[1]?>">2위: <?=$names[1]?></option>
-							<option value="<?=$names[2]?>">3위: <?=$names[2]?></option>
-							<option value="<?=$names[3]?>">4위: <?=$names[3]?></option>
-						</select>
-					</div>
-				</div>
-
-				<div class="row">
 					<div class="w3-container w3-cell" style="padding-right: 50px;"><h3>비고</h3></div>
-					<div class="w3-container w3-cell w3-mobile">
-						<input name="remarks" class="w3-input" placeholder="헤아림 역만 상세, 관전자, 방총자 등 특기사항">
+					<div class="w3-container w3-mobile">
+						<input name="remarks" class="w3-border" placeholder="비고 예) 헤아림 역만 상세, 관전자">
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="w3-container w3-cell" style="padding-right: 50px;"><h3>사진 업로드</h3></div>
+					<div class="w3-container w3-cell" style="padding-right: 50px;"><h3>첨부파일</h3></div>
 					<div class="w3-container w3-cell w3-mobile">
-						<input name="photo[]" type="file" multiple>
+						<input name="uploads[]" type="file" multiple>
 					</div>
 				</div>
 
@@ -156,6 +124,14 @@
 			function w3_close() {
 					document.getElementById("mySidebar").style.display = "none";
 			}
+
+			function disable_loser() {
+				document.getElementById("loser").disabled = true;
+			}
+			function enable_loser() {
+				document.getElementById("loser").disabled = false;
+			}
+
 		</script>
 	</body>
 </html>

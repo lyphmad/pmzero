@@ -15,12 +15,8 @@
 				</div>
 			</div>
 
-			<div class="w3-col w3-container">
-				<p style="color:red;"><b>변경사항을 적용하는 데 시간이 조금 걸릴 수 있으니 잠시 기다린 후 새로고침 해주세요!</b></p>
-			</div>
-
 			<?php
-			$conn = new mysqli("localhost", "ubuntu", "", "pmzero");
+			$conn = new mysqli("localhost", "openvpnas", "", "pmzero");
 			if ($conn->connect_error) {
 				die("Connection failed: " . $conn->connect_error());
 			}
@@ -36,7 +32,7 @@
 			);
 			?>
 
-			<div class="w3-container" style="overflow-x:auto;">
+			<div style="overflow-x:auto;">
 				<table class="w3-table-all">
 					<tr style="background-color: #43c1c3; color: white;">
 						<th nowrap>일시</th>
@@ -45,7 +41,6 @@
 						<th nowrap>3위</th>
 						<th nowrap>4위</th>
 						<th nowrap>공탁</th>
-						<th nowrap></th>
 						<th nowrap></th>
 						<th nowrap></th>
 					</tr>
@@ -62,7 +57,6 @@
 						<td nowrap> <?=$rowitem['leftover']?> </td>
 						<td nowrap style='color:blue;'> <ins> <a href='edit_form.php?id=<?=$rowitem['gameID']?>'>수정</a> </ins> </td>
 						<td nowrap style='color:blue;'> <ins> <a href='#' onclick="delete_button(<?=$rowitem['gameID']?>)">삭제</a> </ins> </td>
-						<td nowrap style='color:blue;'> <ins> <a href='chicken_form.php?id=<?=$rowitem['gameID']?>'>역만</a> </ins> </td>
 					</tr>
 				<?php 
 				} 
