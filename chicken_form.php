@@ -1,3 +1,21 @@
+<?php
+// Create connection
+$conn = new mysqli("localhost", "openvpnas", "", "pmzero");
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$conn->set_charset("utf8");
+
+$result = $conn->query("SELECT * FROM Members ORDER BY `name`;");
+
+$members = array();
+while ($rowitem = $result->fetch_array()) {
+  $members[$rowitem['memberID']] = $rowitem['name'];
+}
+?>
+
 <!DOCTYPE html>
 <html>
 	<title>UNIST 마작 소모임 ±0</title>
@@ -18,15 +36,27 @@
 			<form method="POST" action="chicken.php" enctype="multipart/form-data">
 				<div class="row">
 					<div class="w3-container w3-cell">
-						<input id="maker" name="maker" class="w3-input" type="text" placeholder="화료자">
+						<select name="maker">
+							<?php
+							foreach ($members as $ID => $name) {
+								echo '<option value=' . $ID . '>'.$name.'</option>';
+							}
+							?>
+						</select><br>
 						<input type="radio" name="ron" value="0" onclick="disable_loser()">쯔모
 						<input type="radio" name="ron" value="1" onclick="enable_loser()">론
 					</div>
 				</div>
 
-				<div class="row">
+				<div class="row" id="loser">
 					<div class="w3-container w3-cell">
-						<input id="loser" name="loser" class="w3-input" type="text" placeholder="방총자">
+						<select name="loser">
+							<?php
+							foreach ($members as $ID => $name) {
+								echo '<option value=' . $ID . '>'.$name.'</option>';
+							}
+							?>
+						</select>
 					</div>
 				</div>
 
@@ -126,10 +156,10 @@
 			}
 
 			function disable_loser() {
-				document.getElementById("loser").disabled = true;
+				document.getElementById("loser").style.display = 'none';
 			}
 			function enable_loser() {
-				document.getElementById("loser").disabled = false;
+				document.getElementById("loser").style.display = 'block';
 			}
 
 		</script>

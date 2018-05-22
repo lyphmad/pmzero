@@ -40,8 +40,7 @@ while ($rowitem = $result->fetch_array()) {
 					<select name="eastID" style="width:100%;" autocomplete="off">
 						<?php
 						foreach ($members as $ID => $name) {
-							echo '<option value=' . $ID . '>' . $ID . ' - '.$name.'</option>';
-							$i++;
+							echo '<option value=' . $ID . '>'.$name.'</option>';
 						}
 						?>
 					</select>
@@ -58,8 +57,7 @@ while ($rowitem = $result->fetch_array()) {
 					<select name="southID" style="width:100%;" autocomplete="off">
 						<?php
 						foreach ($members as $ID => $name) {
-							echo '<option value=' . $ID . '>' . $ID . ' - '.$name.'</option>';
-							$i++;
+							echo '<option value=' . $ID . '>' . $name . '</option>';
 						}
 						?>
 					</select>
@@ -76,8 +74,7 @@ while ($rowitem = $result->fetch_array()) {
 					<select name="westID" style="width:100%;" autocomplete="off">
 						<?php
 						foreach ($members as $ID => $name) {
-							echo '<option value=' . $ID . '>' . $ID . ' - '.$name.'</option>';
-							$i++;
+							echo '<option value=' . $ID . '>'.$name.'</option>';
 						}
 						?>
 					</select>
@@ -94,8 +91,7 @@ while ($rowitem = $result->fetch_array()) {
 					<select name="northID" style="width:100%;" autocomplete="off">
 						<?php
 						foreach ($members as $ID => $name) {
-							echo '<option value=' . $ID . '>' . $ID . ' - '.$name.'</option>';
-							$i++;
+							echo '<option value=' . $ID . '>'.$name.'</option>';
 						}
 						?>
 					</select>
