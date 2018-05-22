@@ -9,10 +9,10 @@ if ($conn->connect_error) {
 $conn->set_charset("utf8");
 
 $gameID = $_GET["gameID"];
-$eastName = $_GET["eastName"];
-$southName = $_GET["southName"];
-$westName = $_GET["westName"];
-$northName = $_GET["northName"];
+$eastID = $_GET["eastID"];
+$southID = $_GET["southID"];
+$westID = $_GET["westID"];
+$northID = $_GET["northID"];
 
 if (empty($_GET["eastScore"])) {
 	$eastScore = 0;
@@ -45,17 +45,17 @@ else {
 	$leftover = $_GET["leftover"];
 }
 
-$sql = "INSERT INTO Cache SET
-	eastName = '$eastName', eastScore = $eastScore,
-	southName = '$southName', southScore = $southScore,
-	westName = '$westName', westScore = $westScore,
-	northName = '$northName', northScore = $northScore,
-	leftover = $leftover, new = 1, edited = 0, deleted = 0";
+$sql = "INSERT INTO Games SET
+	eastID = $eastID, eastScore = $eastScore,
+	southID = $southID, southScore = $southScore,
+	westID = $westID, westScore = $westScore,
+	northID = $northID, northScore = $northScore,
+	leftover = $leftover";
 
 if ($conn->query($sql) === TRUE) {
 	echo "<script>
 	alert('등록되었습니다.');
-	window.location.href='score_this_month.php';
+	window.location.href='career_ranking.php';
 	</script>";
 } else {
 	die("Error: " . $sql . "<br>" . $conn->error);

@@ -10,9 +10,9 @@ $conn->set_charset("utf8");
 
 $result = $conn->query("SELECT * FROM Members ORDER BY `name`;");
 
-$arr = array();
+$members = array();
 while ($rowitem = $result->fetch_array()) {
-  array_push($arr, $rowitem['name']);
+  $members[$rowitem['memberID']] = $rowitem['name'];
 }
 ?>
 
@@ -37,37 +37,68 @@ while ($rowitem = $result->fetch_array()) {
 				<div class="row">
 					<div class="w3-container w3-cell wind"><h3>동</h3></div>
 					<div class="w3-container w3-cell" style="width:130px;">
-						<input id="eastName" name="eastName" class="w3-input" type="text" placeholder="이름">
+					<select name="eastID" style="width:100%;" autocomplete="off">
+						<?php
+						foreach ($members as $ID => $name) {
+							echo '<option value=' . $ID . '>' . $ID . ' - '.$name.'</option>';
+							$i++;
+						}
+						?>
+					</select>
 					</div>
 					<div class="w3-container w3-cell w3-mobile">
 						<input id="eastScore" name="eastScore" class="w3-input" type="text" onblur="getTotal()" placeholder="점수" autocomplete="off">
 					</div>
 				</div>
 
+			<form method="get" action="record.php">
 				<div class="row">
 					<div class="w3-container w3-cell wind"><h3>남</h3></div>
 					<div class="w3-container w3-cell" style="width:130px;">
-						<input id="southName" name="southName" class="w3-input" type="text" placeholder="이름">
+					<select name="southID" style="width:100%;" autocomplete="off">
+						<?php
+						foreach ($members as $ID => $name) {
+							echo '<option value=' . $ID . '>' . $ID . ' - '.$name.'</option>';
+							$i++;
+						}
+						?>
+					</select>
 					</div>
 					<div class="w3-container w3-cell w3-mobile">
 						<input id="southScore" name="southScore" class="w3-input" type="text" onblur="getTotal()" placeholder="점수" autocomplete="off">
 					</div>
 				</div>
 
+			<form method="get" action="record.php">
 				<div class="row">
 					<div class="w3-container w3-cell wind"><h3>서</h3></div>
 					<div class="w3-container w3-cell" style="width:130px;">
-						<input id="westName" name="westName" class="w3-input" type="text" placeholder="이름">
+					<select name="westID" style="width:100%;" autocomplete="off">
+						<?php
+						foreach ($members as $ID => $name) {
+							echo '<option value=' . $ID . '>' . $ID . ' - '.$name.'</option>';
+							$i++;
+						}
+						?>
+					</select>
 					</div>
 					<div class="w3-container w3-cell w3-mobile">
 						<input id="westScore" name="westScore" class="w3-input" type="text" onblur="getTotal()" placeholder="점수" autocomplete="off">
 					</div>
 				</div>
 
+			<form method="get" action="record.php">
 				<div class="row">
 					<div class="w3-container w3-cell wind"><h3>북</h3></div>
 					<div class="w3-container w3-cell" style="width:130px;">
-						<input id="northName" name="northName" class="w3-input" type="text" placeholder="이름">
+					<select name="northID" style="width:100%;" autocomplete="off">
+						<?php
+						foreach ($members as $ID => $name) {
+							echo '<option value=' . $ID . '>' . $ID . ' - '.$name.'</option>';
+							$i++;
+						}
+						?>
+					</select>
 					</div>
 					<div class="w3-container w3-cell w3-mobile">
 						<input id="northScore" name="northScore" class="w3-input" type="text" onblur="getTotal()" placeholder="점수" autocomplete="off">
