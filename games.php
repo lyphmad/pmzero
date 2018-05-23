@@ -2,7 +2,7 @@
 <html>
 <title>UNIST 마작 소모임 ±0</title>
 <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="w3.css">
 
 <body>
   <div w3-include-html="menubar.html"></div>
