@@ -150,10 +150,10 @@
 					echo '<td nowrap>' . $rank[4] . '</td>';
 					echo '<td nowrap>' . $average . '</td>';
 					echo '<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>';
-					echo '<td nowrap>' . round($rank[1] * 100 / $total) . '</td>';
-					echo '<td nowrap>' . round($rank[2] * 100 / $total) . '</td>';
-					echo '<td nowrap>' . round($rank[3] * 100 / $total) . '</td>';
-					echo '<td nowrap>' . round($rank[4] * 100 / $total) . '</td>';
+					echo '<td nowrap>' . round($rank[1] * 100 / $total, 1) . '</td>';
+					echo '<td nowrap>' . round($rank[2] * 100 / $total, 1) . '</td>';
+					echo '<td nowrap>' . round($rank[3] * 100 / $total, 1) . '</td>';
+					echo '<td nowrap>' . round($rank[4] * 100 / $total, 1) . '</td>';
 					echo '</tr>';
 				}
 				?>
