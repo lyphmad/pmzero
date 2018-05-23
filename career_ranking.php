@@ -23,7 +23,7 @@
 				die("Connection failed: " . $conn->connect_error);
 		}
 		$conn->set_charset("utf8");
-		$games = $conn->query("SELECT * FROM Games;");
+		$games = $conn->query("SELECT * FROM Games WHERE valid = true;");
 
 		$player_score = array();
 		$player_info = array();
@@ -50,7 +50,7 @@
 
 			for ($i = 0; $i < 4; $i++) {
 				if ($rank[$i] == 1) {
-					$player_score[$playerID[$i]] += ($score[$i] + 20000) / 1000;
+					$player_score[$playerID[$i]] += ($score[$i] + 10000) / 1000;
 					$player_info[$playerID[$i]]['rank'][1]++;
 				}
 				elseif ($rank[$i] == 2) {
@@ -62,7 +62,7 @@
 					$player_info[$playerID[$i]]['rank'][3]++;
 				}
 				elseif ($rank[$i] == 4) {
-					$player_score[$playerID[$i]] += ($score[$i] - 60000) / 1000;
+					$player_score[$playerID[$i]] += ($score[$i] - 50000) / 1000;
 					$player_info[$playerID[$i]]['rank'][4]++;
 				}
 			} //우마: 10-30

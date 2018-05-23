@@ -11,11 +11,11 @@
 		<div style="background-color: #001c54; color: white" scrolling="NO">
 			<button class="w3-button w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
 			<div class="w3-container">
-				<h1>통산 랭킹</h1>
+				<h1>경기 기록</h1>
 			</div>
 		</div>
 
-		<div style="overflow-x:scroll;">
+		<div style="overflow-x:auto;">
 			<table class="w3-table-all">
 				<tr style="background-color: #43c1c3; color: white;">
 					<th nowrap></th>
@@ -39,7 +39,7 @@
 						die("Connection failed: " . $conn->connect_error);
 				}
 				$conn->set_charset("utf8");
-				$games = $conn->query("SELECT * FROM Games ORDER BY gameID DESC;");
+				$games = $conn->query("SELECT * FROM Games WHERE valid = true ORDER BY gameID DESC;");
 
 				$player_name = array();
 				$windName = array ("동", "남", "서", "북");
