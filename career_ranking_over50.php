@@ -88,7 +88,7 @@
 
 			for ($i = 0; $i < 4; $i++) {
 				if ($rank[$i] == 1) {
-					$player_score[$playerID[$i]] += ($score[$i] + 10000) / 1000;
+					$player_score[$playerID[$i]] += ($score[$i] + 20000) / 1000;
 					$player_info[$playerID[$i]]['rank'][1]++;
 				}
 				elseif ($rank[$i] == 2) {
@@ -100,7 +100,7 @@
 					$player_info[$playerID[$i]]['rank'][3]++;
 				}
 				elseif ($rank[$i] == 4) {
-					$player_score[$playerID[$i]] += ($score[$i] - 50000) / 1000;
+					$player_score[$playerID[$i]] += ($score[$i] - 60000) / 1000;
 					$player_info[$playerID[$i]]['rank'][4]++;
 				}
 			} //우마: 10-30
@@ -116,7 +116,7 @@
 					<th nowrap>이름</th>
 					<th nowrap>승점</th>
 					<th nowrap>평균 승점</th>
-					<th nowrap>대국수</th>
+					<th nowrap>해당 대국수</th>
 					<th nowrap style="border-left: 1px solid black; margin-right: 5px;"></th>
 					<th nowrap>1위</th>
 					<th nowrap>2위</th>
