@@ -38,6 +38,7 @@ while ($rowitem = $result->fetch_array()) {
 					<div class="w3-container w3-cell wind"><h3>동</h3></div>
 					<div class="w3-container w3-cell" style="width:130px;">
 					<select name="eastID" style="width:100%;" autocomplete="off">
+						<option disabled selected> --- </option>
 						<?php
 						foreach ($members as $ID => $name) {
 							echo '<option value=' . $ID . '>'.$name.'</option>';
@@ -55,6 +56,7 @@ while ($rowitem = $result->fetch_array()) {
 					<div class="w3-container w3-cell wind"><h3>남</h3></div>
 					<div class="w3-container w3-cell" style="width:130px;">
 					<select name="southID" style="width:100%;" autocomplete="off">
+						<option disabled selected> --- </option>
 						<?php
 						foreach ($members as $ID => $name) {
 							echo '<option value=' . $ID . '>' . $name . '</option>';
@@ -72,6 +74,7 @@ while ($rowitem = $result->fetch_array()) {
 					<div class="w3-container w3-cell wind"><h3>서</h3></div>
 					<div class="w3-container w3-cell" style="width:130px;">
 					<select name="westID" style="width:100%;" autocomplete="off">
+						<option disabled selected> --- </option>
 						<?php
 						foreach ($members as $ID => $name) {
 							echo '<option value=' . $ID . '>'.$name.'</option>';
@@ -89,6 +92,7 @@ while ($rowitem = $result->fetch_array()) {
 					<div class="w3-container w3-cell wind"><h3>북</h3></div>
 					<div class="w3-container w3-cell" style="width:130px;">
 					<select name="northID" style="width:100%;" autocomplete="off">
+						<option disabled selected> --- </option>
 						<?php
 						foreach ($members as $ID => $name) {
 							echo '<option value=' . $ID . '>'.$name.'</option>';
@@ -163,6 +167,13 @@ while ($rowitem = $result->fetch_array()) {
 				if (left) { tot += left; }
 				document.getElementById('total').value = tot;
 				if (tot == 100000) { document.getElementById("submit").disabled = false; }
+			}
+
+			function validate() {
+				if (getTotal() != 100000) {
+					alert("점수 합계를 확인하세요");
+					return false;
+				}
 			}
 		</script>
 	</body>

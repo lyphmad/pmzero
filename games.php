@@ -78,7 +78,7 @@
 						}
 					}
 					if ($sum == 100000) { echo '<tr>'; }
-					else { echo '<tr color=red>'; }
+					else { echo '<tr style="color: red">'; }
 					echo '<td nowrap>' . $rowitem['gameID'] . '</td>';
 					echo '<td nowrap>' . $rowitem['gameTime'] . '</td>';
 					echo '<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>';
@@ -88,10 +88,11 @@
 					echo '<td nowrap>[' . $windName[$fourthWind] . '] ' . $player_name[$playerID[$fourthWind]] . ': ' . $score[$fourthWind]  . '</td>';
 					echo '<td nowrap>' . $rowitem['leftover']  . '</td>';
 					echo '<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>';
-					echo '<td nowrap>수정</td>';
-					echo '<td nowrap>삭제</td>';
+					echo '<td nowrap><a href="edit_form.php?id=' . $rowitem['gameID'] . '">수정</a></td>';
+					echo '<td nowrap style="color: red" onclick="delete_game(' . $rowitem['gameID'] . ')"><a href="#">삭제</a></td>';
 					echo '</tr>';
 				}
+				$conn->close();
 				?>
 			</table>
 		</div>
@@ -102,9 +103,16 @@
 		function w3_open() {
 				document.getElementById("mySidebar").style.display = "block";
 		}
+
 		function w3_close() {
 				document.getElementById("mySidebar").style.display = "none";
-		}  
+		}
+
+		function delete_game (gameID) {
+			if (confirm (gameID + "번 경기 기록을 삭제합니다.\n계속하시겠습니까?")) {
+				window.location.href = 'delete.php?id=' + gameID;
+			}
+		}
 	</script>
 	</body>
 </html>
