@@ -50,8 +50,6 @@ while ($rowitem = $result->fetch_array()) {
 						<input id="eastScore" name="eastScore" class="w3-input" type="text" onblur="getTotal()" placeholder="점수" autocomplete="off">
 					</div>
 				</div>
-
-			<form method="get" action="record.php">
 				<div class="row">
 					<div class="w3-container w3-cell wind"><h3>남</h3></div>
 					<div class="w3-container w3-cell" style="width:130px;">
@@ -68,8 +66,6 @@ while ($rowitem = $result->fetch_array()) {
 						<input id="southScore" name="southScore" class="w3-input" type="text" onblur="getTotal()" placeholder="점수" autocomplete="off">
 					</div>
 				</div>
-
-			<form method="get" action="record.php">
 				<div class="row">
 					<div class="w3-container w3-cell wind"><h3>서</h3></div>
 					<div class="w3-container w3-cell" style="width:130px;">
@@ -86,8 +82,6 @@ while ($rowitem = $result->fetch_array()) {
 						<input id="westScore" name="westScore" class="w3-input" type="text" onblur="getTotal()" placeholder="점수" autocomplete="off">
 					</div>
 				</div>
-
-			<form method="get" action="record.php">
 				<div class="row">
 					<div class="w3-container w3-cell wind"><h3>북</h3></div>
 					<div class="w3-container w3-cell" style="width:130px;">
@@ -115,11 +109,11 @@ while ($rowitem = $result->fetch_array()) {
 				<div class="row">
 					<div class="w3-container w3-cell" style="padding-right: 155px;"><h3>합계</h3></div>
 					<div class="w3-container w3-cell w3-mobile">
-						<output id="total" type="text" class="w3-input" style="width:100%;" value="0">
+						<output id="total" type="text" style="width:100%;" value="0">
 					</div>
 				</div>
 				
-				<div class="row" style="height: 200px;">
+				<div class="row">
 					<div class="w3-container w3-row-padding">
 						<input id="submit" class="w3-button w3-border" type="submit" value="기록 입력" disabled>
 					</div>
@@ -149,9 +143,11 @@ while ($rowitem = $result->fetch_array()) {
 			function w3_open() {
 					document.getElementById("mySidebar").style.display = "block";
 			}
+
 			function w3_close() {
 					document.getElementById("mySidebar").style.display = "none";
 			}
+
 			function getTotal() {
 				var east = parseInt(document.getElementById('eastScore').value);
 				var south = parseInt(document.getElementById('southScore').value);
@@ -165,8 +161,17 @@ while ($rowitem = $result->fetch_array()) {
 				if (west) { tot += west; }
 				if (north) { tot += north; }
 				if (left) { tot += left; }
-				document.getElementById('total').value = tot;
-				if (tot == 100000) { document.getElementById("submit").disabled = false; }
+
+				if (tot == 100000) {
+					document.getElementById("submit").disabled = false;
+					document.getElementById('total').value = tot;
+				}
+				else {
+					var minus = "(" + (tot - 100000) + ")";
+					var str = tot + " " + minus.fontcolor ("red");
+					document.getElementById('total').innerHTML = str;
+					document.getElementById("submit").disabled = true;
+				}
 			}
 
 			function validate() {
