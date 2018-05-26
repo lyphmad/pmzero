@@ -42,7 +42,7 @@ $article = $conn->query ($sql)->fetch_array ();
 					<input type="checkbox" name="deleteFile"> 사진 삭제하기 </br>
 
 					<div style="margin-top: 50px">
-						화료 기록 시 적을 만한 것들: 화료자, 론 화료면 방총자, 역 이름, 시점(동1국, etc.), (역만이면) 그래서 치킨은 사셨는지?
+						화료 기록 시 적을 만한 것들: 화료자, 론 화료면 방총자, 역 이름, 시점(동1국, etc.), (역만이면) 그래서 치킨은 사셨는지?<br>
 						HTML 문법 일단 안 막았습니다. Youtube embed 같은 거 다 됩니다.
 					</div>
 					<div><textarea id="content" name="content" cols="100" rows="5" class="w3-mobile" form="uploadForm"></textarea></div>
