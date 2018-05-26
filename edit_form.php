@@ -8,7 +8,7 @@
 		<div w3-include-html="menubar.html"></div>
 
 		<div class="w3-main" style="margin-left:200px">
-			<div style="background-color: #001c54; color: white">
+			<div class="w3-card" style="background-color: #001c54; color: white">
 				<button class="w3-button w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
 				<div class="w3-container">
 					<h1>기록 수정</h1>
