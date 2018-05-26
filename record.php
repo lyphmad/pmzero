@@ -55,7 +55,7 @@ $sql = "INSERT INTO Games SET
 if ($conn->query($sql) === TRUE) {
 	echo "<script>
 	alert('등록되었습니다.');
-	window.location.href='career_ranking.php';
+	window.location.href='games.php';
 	</script>";
 } else {
 	die("Error: " . $sql . "<br>" . $conn->error);

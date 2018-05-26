@@ -25,6 +25,7 @@
 					<th nowrap>2위</th>
 					<th nowrap>3위</th>
 					<th nowrap>4위</th> 
+					<th nowrap style="border-left: 1px solid black; margin-right: 5px;"></th>
 					<th nowrap>공탁점</th>   
 					<th nowrap style="border-left: 1px solid black; margin-right: 5px;"></th>
 					<th nowrap></th>
@@ -86,6 +87,7 @@
 					echo '<td nowrap>[' . $windName[$secondWind] . '] ' . $player_name[$playerID[$secondWind]] . ': ' . $score[$secondWind]  . '</td>';
 					echo '<td nowrap>[' . $windName[$thirdWind] . '] ' . $player_name[$playerID[$thirdWind]] . ': ' . $score[$thirdWind]  . '</td>';
 					echo '<td nowrap>[' . $windName[$fourthWind] . '] ' . $player_name[$playerID[$fourthWind]] . ': ' . $score[$fourthWind]  . '</td>';
+					echo '<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>';
 					echo '<td nowrap>' . $rowitem['leftover']  . '</td>';
 					echo '<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>';
 					echo '<td nowrap><a href="edit_form.php?id=' . $rowitem['gameID'] . '">수정</a></td>';
@@ -107,7 +109,7 @@
 		function w3_close() {
 				document.getElementById("mySidebar").style.display = "none";
 		}
-
+		
 		function delete_game (gameID) {
 			if (confirm (gameID + "번 경기 기록을 삭제합니다.\n계속하시겠습니까?")) {
 				window.location.href = 'delete.php?id=' + gameID;

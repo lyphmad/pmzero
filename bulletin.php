@@ -45,8 +45,7 @@
 					echo '<td nowrap><a href="bulletin_show.php?id=' . $rowitem['articleID'] . '">' . $rowitem['title'] . '</td>';
 					echo '<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>';
 					echo '<td nowrap><a href="bulletin_edit_form.php?id=' . $rowitem['articleID'] . '">수정</a></td>';
-					//echo '<td nowrap style="color: red" onclick="delete_article(' . $rowitem['articleID'] . ')"><a href="#">삭제</a></td>';
-					echo '<td nowrap>삭제</td>';
+					echo '<td nowrap style="color: red" onclick="delete_article(' . $rowitem['articleID'] . ')"><a href="#">삭제</a></td>';
 					echo '</tr>';
 				}
 				$conn->close();
@@ -65,11 +64,11 @@
 				document.getElementById("mySidebar").style.display = "none";
 		}
 		
-		/*function delete_article (articleID) {
-			if (confirm (articleID + "번 경기 기록을 삭제합니다.\n계속하시겠습니까?")) {
-				window.location.href = 'delete.php?id=' + articleID;
+		function delete_article (articleID) {
+			if (confirm (articleID + "번 게시물을 삭제합니다.\n계속하시겠습니까?")) {
+				window.location.href = 'bulletin_delete_article.php?id=' + articleID;
 			}
-		}*/
+		}
 	</script>
 	</body>
 </html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<title>UNIST 마작 소모임 ±0</title>
+	<meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="w3.css">
+
+	<body>
+		<div w3-include-html="menubar.html"></div>
+
+		<div class="w3-main" style="margin-left:200px">
+			<div class="w3-card" style="background-color: #001c54; color: white" scrolling="NO">
+				<button class="w3-button w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
+				<div class="w3-container">
+					<h1>main page</h1>
+				</div>
+			</div>
+
+			<!--  INSERT HERE  !-->
+
+		</div>
+
+		<script src="https://www.w3schools.com/lib/w3.js"></script> 
+		<script>
+			w3.includeHTML();
+			function w3_open() {
+					document.getElementById("mySidebar").style.display = "block";
+			}
+			function w3_close() {
+					document.getElementById("mySidebar").style.display = "none";
+			}  
+		</script>
+	</body>
+</html>
