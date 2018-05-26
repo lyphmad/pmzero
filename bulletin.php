@@ -15,7 +15,7 @@
 			</div>
 		</div>
 
-		<div style="width:fit-content;">
+		<div style="width:fit-content; overflow-x:auto;">
 			<table class="w3-table-all">
 				<tr style="background-color: #43c1c3; color: white;">
 					<th nowrap></th>
