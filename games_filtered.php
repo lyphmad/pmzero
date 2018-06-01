@@ -43,7 +43,7 @@
 
 				$start = $_GET['startID'];
 				$end = $_GET['endID'];
-				$games = $conn->query("SELECT * FROM Games WHERE valid = true AND gameID <= $end AND gameID >= $start ORDER BY gameID DESC;");
+				$games = $conn->query("SELECT * FROM Games WHERE valid = true AND gameID <= $end AND gameID >= $start ORDER BY gameTime DESC;");
 				$num = $games->num_rows;
 
 				$player_name = array();
