@@ -15,21 +15,11 @@
 				</div>
 			</div>
 
-			<form method="GET" action="games_period.php">
-				<div class="w3-container" style="margin-top: 10px;">
-					기간을 입력해주십시오.<br>
-
-					<input id="start" name="start" type="date">
-					<button onclick="firstgame()" type="button">처음으로</button> ~
-					끝: <input id="end" name="end" type="date">
-					<input type="submit" value="제출">
-				</div>
-			</form>
-
-			<form method="GET" action="games_period_direct.php">
+			<form method="GET" action="games_filtered.php">
 				<div class="w3-container" style="margin-top: 50px;">
-					또는, 대국 번호를 입력하여 주십시오.<br>
+					대국 번호를 입력하여 주십시오.<br>
 					양 끝 대국을 포함합니다.<br>
+					(일자 기반 검색 추가 예정)<br>
 					<input name="startID" type="number"> ~ <input name="endID" type="number">
 					<input type="submit" value="제출">
 				</div>
