@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<title>UNIST 마작 소모임 ±0</title>
+	<meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="w3.css">
+
+	<body>
+		<div w3-include-html="menubar.html"></div>
+
+		<div class="w3-main" style="margin-left:200px">
+			<div class="w3-card" style="background-color: #001c54; color: white" scrolling="NO">
+				<button class="w3-button w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
+				<div class="w3-container">
+					<h1>기간 중 기록</h1>
+				</div>
+			</div>
+
+			<form method="GET" action="games_period.php">
+				<div class="w3-container" style="margin-top: 10px;">
+					기간을 입력해주십시오.<br>
+
+					<input id="start" name="start" type="date">
+					<button onclick="firstgame()" type="button">처음으로</button> ~
+					끝: <input id="end" name="end" type="date">
+					<input type="submit" value="제출">
+				</div>
+			</form>
+
+			<form method="GET" action="games_period_direct.php">
+				<div class="w3-container" style="margin-top: 50px;">
+					또는, 대국 번호를 입력하여 주십시오.<br>
+					양 끝 대국을 포함합니다.<br>
+					<input name="startID" type="number"> ~ <input name="endID" type="number">
+					<input type="submit" value="제출">
+				</div>
+			</form>
+		</div>
+
+		<script src="https://www.w3schools.com/lib/w3.js"></script>
+		<script>
+			w3.includeHTML();
+
+			function w3_open() {
+					document.getElementById("mySidebar").style.display = "block";
+			}
+
+			function w3_close() {
+					document.getElementById("mySidebar").style.display = "none";
+			}
+
+			function firstgame() {
+				document.getElementById("start").value = "2014-04-05";
+			}
+
+			document.getElementById('start').valueAsDate = new Date();
+			document.getElementById('end').valueAsDate = new Date();
+		</script>
+	</body>
+</html>
+
+

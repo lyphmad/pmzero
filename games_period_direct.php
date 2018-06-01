@@ -40,7 +40,10 @@
 						die("Connection failed: " . $conn->connect_error);
 				}
 				$conn->set_charset("utf8");
-				$games = $conn->query("SELECT * FROM Games WHERE valid = true ORDER BY gameID DESC;");
+
+				$start = $_GET['startID'];
+				$end = $_GET['endID'];
+				$games = $conn->query("SELECT * FROM Games WHERE valid = true AND gameID <= $end AND gameID >= $start ORDER BY gameID DESC;");
 				$num = $games->num_rows;
 
 				$player_name = array();
