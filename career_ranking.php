@@ -72,24 +72,24 @@
 		?>
 
 		<div style="overflow-x:auto;">
-			<table class="w3-table-all">
+			<table id="myTable" class="w3-table-all">
 				<tr style="background-color: #43c1c3; color: white;">
-					<th nowrap>순위</th>
-					<th nowrap>이름</th>
-					<th nowrap>승점</th>
-					<th nowrap>평균 승점</th>
-					<th nowrap>대국수</th>
+					<th nowrap onclick="sortTable(0)">순위</th>
+					<th nowrap onclick="sortTable(1)">이름</th>
+					<th nowrap onclick="sortTable(2)">승점</th>
+					<th nowrap onclick="sortTable(3)">평균 승점</th>
+					<th nowrap onclick="sortTable(4)">대국수</th>
 					<th nowrap style="border-left: 1px solid black; margin-right: 5px;"></th>
-					<th nowrap>1위</th>
-					<th nowrap>2위</th>
-					<th nowrap>3위</th>
-					<th nowrap>4위</th> 
-					<th nowrap>평균 순위</th>   
+					<th nowrap onclick="sortTable(6)">1위</th>
+					<th nowrap onclick="sortTable(7)">2위</th>
+					<th nowrap onclick="sortTable(8)">3위</th>
+					<th nowrap onclick="sortTable(9)">4위</th> 
+					<th nowrap onclick="sortTable(10)">평균 순위</th>   
 					<th nowrap style="border-left: 1px solid black; margin-right: 5px;"></th>
-					<th nowrap>1위율</th>
-					<th nowrap>2위율</th>
-					<th nowrap>3위율</th>
-					<th nowrap>4위율</th>
+					<th nowrap onclick="sortTable(12)">1위율</th>
+					<th nowrap onclick="sortTable(13)">2위율</th>
+					<th nowrap onclick="sortTable(14)">3위율</th>
+					<th nowrap onclick="sortTable(15)">4위율</th>
 				</tr>
 				<?php
 				$i = 1;
@@ -126,11 +126,98 @@
 	<script>
 		w3.includeHTML();
 		function w3_open() {
-				document.getElementById("mySidebar").style.display = "block";
+			document.getElementById("mySidebar").style.display = "block";
 		}
 		function w3_close() {
-				document.getElementById("mySidebar").style.display = "none";
-		}  
+			document.getElementById("mySidebar").style.display = "none";
+		}
+
+		function sortTable(elem) { //from https://www.w3schools.com/howto/howto_js_sort_table.asp
+			var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+			table = document.getElementById("myTable");
+			switching = true;
+			// Set the sorting direction to ascending:
+			dir = "asc"; 
+			/* Make a loop that will continue until
+			no switching has been done: */
+			while (switching) {
+				// Start by saying: no switching is done:
+				switching = false;
+				rows = table.getElementsByTagName("TR");
+				/* Loop through all table rows (except the
+				first, which contains table headers): */
+				for (i = 1; i < (rows.length - 1); i++) {
+					// Start by saying there should be no switching:
+					shouldSwitch = false;
+					/* Get the two elements you want to compare,
+					one from current row and one from the next: */
+					x = rows[i].getElementsByTagName("TD")[elem];
+					y = rows[i + 1].getElementsByTagName("TD")[elem];
+					/* Check if the two rows should switch place,
+					based on the direction, asc or desc: */
+					if (elem == 0 || elem == 10) {
+						if (dir == "asc") {
+							if (Number(x.innerHTML) > Number(y.innerHTML)) {
+								// If so, mark as a switch and break the loop:
+								shouldSwitch = true;
+								break;
+							}
+						} else if (dir == "desc") {
+							if (Number(x.innerHTML) < Number(y.innerHTML)) {
+								// If so, mark as a switch and break the loop:
+								shouldSwitch = true;
+								break;
+							}
+						}
+					}
+					else if (elem == 1) {
+						if (dir == "asc") {
+							if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+								// If so, mark as a switch and break the loop:
+								shouldSwitch = true;
+								break;
+							}
+						} else if (dir == "desc") {
+							if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+								// If so, mark as a switch and break the loop:
+								shouldSwitch = true;
+								break;
+							}
+						}
+					}
+					else {
+						if (dir == "asc") {
+							if (Number(x.innerHTML) < Number(y.innerHTML)) {
+								// If so, mark as a switch and break the loop:
+								shouldSwitch = true;
+								break;
+							}
+						} else if (dir == "desc") {
+							if (Number(x.innerHTML) > Number(y.innerHTML)) {
+								// If so, mark as a switch and break the loop:
+								shouldSwitch = true;
+								break;
+							}
+						}
+					}
+				}
+				if (shouldSwitch) {
+					/* If a switch has been marked, make the switch
+					and mark that a switch has been done: */
+					rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+					switching = true;
+					// Each time a switch is done, increase this count by 1:
+					switchcount ++; 
+				} else {
+					/* If no switching has been done AND the direction is "asc",
+					set the direction to "desc" and run the while loop again. */
+					if (switchcount == 0 && dir == "asc") {
+						dir = "desc";
+						switching = true;
+					}
+				}
+			}
+		}
 	</script>
 	</body>
 </html>
