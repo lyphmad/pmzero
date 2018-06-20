@@ -11,7 +11,7 @@
 		<div class="w3-card" style="background-color: #001c54; color: white" scrolling="NO">
 			<button class="w3-button w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
 			<div class="w3-container">
-				<h1>경기 기록</h1>
+				<h1>기간 중 기록</h1>
 			</div>
 		</div>
 
@@ -43,7 +43,8 @@
 
 				$start = $_GET['startID'];
 				$end = $_GET['endID'];
-				$games = $conn->query("SELECT * FROM Games WHERE valid = true AND gameID <= $end AND gameID >= $start ORDER BY gameTime DESC;");
+				$query = "SELECT * FROM Games WHERE valid = true AND gameID <= $end AND gameID >= $start ORDER BY gameTime DESC";
+				$games = $conn->query($query);
 				$num = $games->num_rows;
 
 				$player_name = array();
