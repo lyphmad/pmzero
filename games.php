@@ -40,14 +40,33 @@
 						die("Connection failed: " . $conn->connect_error);
 				}
 				$conn->set_charset("utf8");
-				$games = $conn->query("SELECT * FROM Games WHERE valid = true ORDER BY gameTime DESC;");
-				$num = $games->num_rows;
+
+				$type = $_GET['filter_type'];
+				$individual = $_GET['ind'];
+				if ($individual === "on") { $memberID = $_GET['memberID']; }
+		
+				if ($type === "date") {
+					$start = $_GET['start'];
+					$end = $_GET['end'];
+					$query = "SELECT * FROM Games WHERE valid = true AND gameTime <= (SELECT DATE_ADD('$end', INTERVAL 1 DAY)) AND gameTime >= '$start' ORDER BY gameTime DESC;";
+				}
+				elseif ($type === "ID") {
+					$start = $_GET['startID'];
+					$end = $_GET['endID'];
+					$query = "SELECT * FROM Games WHERE valid = true AND gameID <= $end AND gameID >= $start ORDER BY gameTime DESC;";
+				}
+				else { //none
+					$query = "SELECT * FROM Games WHERE valid = true ORDER BY gameTime DESC;";
+				}
+				$games = $conn->query($query);
+				$num = 0;
 
 				$player_name = array();
 				$windName = array ("동", "남", "서", "북");
 
 				while ($rowitem = $games->fetch_array()) {
 					$playerID = array($rowitem['eastID'], $rowitem['southID'], $rowitem['westID'], $rowitem['northID']);
+					if ($individual === "on" && $playerID[0] != $memberID && $playerID[1] != $memberID && $playerID[2] != $memberID && $playerID[3] != $memberID) { continue;	}
 					$score = array($rowitem['eastScore'], $rowitem['southScore'], $rowitem['westScore'], $rowitem['northScore']);
 					$sum = $score[0] + $score[1] + $score[2] + $score[3] + $rowitem['leftover'];
 
@@ -94,6 +113,7 @@
 					echo '<td nowrap><a href="edit_form.php?id=' . $rowitem['gameID'] . '">수정</a></td>';
 					echo '<td nowrap style="color: red" onclick="delete_game(' . $rowitem['gameID'] . ')"><a href="#">삭제</a></td>';
 					echo '</tr>';
+					$num++;
 				}
 				$conn->close();
 				?>

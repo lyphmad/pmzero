@@ -11,7 +11,7 @@
 		<div class="w3-card" style="background-color: #001c54; color: white" scrolling="NO">
 			<button class="w3-button w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
 			<div class="w3-container">
-				<h1>통산 랭킹 (50국 이상 인원 간)</h1>
+				<h1>순위</h1>
 			</div>
 		</div>
 
@@ -23,49 +23,70 @@
 				die("Connection failed: " . $conn->connect_error);
 		}
 		$conn->set_charset("utf8");
-		$games = $conn->query("SELECT * FROM Games WHERE valid = true;");
-
-		$player_total = array();
-
-		while ($rowitem = $games->fetch_array()) {
-			if (!array_key_exists ($rowitem['eastID'], $player_total)) {
-				$player_total[$rowitem['eastID']] = 1;
-			}
-			else {
-				$player_total[$rowitem['eastID']]++;
-			}
-			
-			if (!array_key_exists ($rowitem['southID'], $player_total)) {
-				$player_total[$rowitem['southID']] = 1;
-			}
-			else {
-				$player_total[$rowitem['southID']]++;
-			}
-			
-			if (!array_key_exists ($rowitem['westID'], $player_total)) {
-				$player_total[$rowitem['westID']] = 1;
-			}
-			else {
-				$player_total[$rowitem['westID']]++;
-			}
-			
-			if (!array_key_exists ($rowitem['northID'], $player_total)) {
-				$player_total[$rowitem['northID']] = 1;
-			}
-			else {
-				$player_total[$rowitem['northID']]++;
-			}
-		}
 
 		$player_score = array();
 		$player_info = array();
-		$games = $conn->query("SELECT * FROM Games WHERE valid = true;");
+
+		$filter_type = $_GET['filter_type'];
+		$minimum = $_GET['minimum'];
+
+		if ($filter_type === "ID") {
+			$start = $_GET['startID'];
+			$end = $_GET['endID'];
+			$query = "SELECT * FROM Games WHERE valid = true AND gameID <= $end AND gameID >= $start ORDER BY gameTime DESC;";
+		}
+		elseif ($filter_type === "none") {
+			$query = "SELECT * FROM Games WHERE valid = true;";
+		}
+		else { //none
+			$start = $_GET['start'];
+			$end = $_GET['end'];
+			$query = "SELECT * FROM Games WHERE valid = true AND gameTime <= (SELECT DATE_ADD('$end', INTERVAL 1 DAY)) AND gameTime >= '$start' ORDER BY gameTime DESC;";
+		}
+		$games = $conn->query($query);
+
+		if ($minimum != 0) {
+			$player_total = array();
+
+			while ($rowitem = $games->fetch_array()) {
+				if (!array_key_exists ($rowitem['eastID'], $player_total)) {
+					$player_total[$rowitem['eastID']] = 1;
+				}
+				else {
+					$player_total[$rowitem['eastID']]++;
+				}
+				
+				if (!array_key_exists ($rowitem['southID'], $player_total)) {
+					$player_total[$rowitem['southID']] = 1;
+				}
+				else {
+					$player_total[$rowitem['southID']]++;
+				}
+				
+				if (!array_key_exists ($rowitem['westID'], $player_total)) {
+					$player_total[$rowitem['westID']] = 1;
+				}
+				else {
+					$player_total[$rowitem['westID']]++;
+				}
+				
+				if (!array_key_exists ($rowitem['northID'], $player_total)) {
+					$player_total[$rowitem['northID']] = 1;
+				}
+				else {
+					$player_total[$rowitem['northID']]++;
+				}
+			}
+			$games = $conn->query($query);
+		}
 
 		while ($rowitem = $games->fetch_array()) {
-			if ($player_total[$rowitem['eastID']] < 50) { continue; }
-			if ($player_total[$rowitem['southID']] < 50) { continue; }
-			if ($player_total[$rowitem['westID']] < 50) { continue; }
-			if ($player_total[$rowitem['northID']] < 50) { continue; }
+			if ($minimum != 0) {
+				if ($player_total[$rowitem['eastID']] < $minimum) { continue; }
+				if ($player_total[$rowitem['southID']] < $minimum) { continue; }
+				if ($player_total[$rowitem['westID']] < $minimum) { continue; }
+				if ($player_total[$rowitem['northID']] < $minimum) { continue; }
+			}
 
 			$playerID = array($rowitem['eastID'], $rowitem['southID'], $rowitem['westID'], $rowitem['northID']);
 			$score = array($rowitem['eastScore'], $rowitem['southScore'], $rowitem['westScore'], $rowitem['northScore']);
@@ -109,7 +130,7 @@
 		arsort ($player_score);
 		?>
 
-		<div style="overflow-x:auto;">
+		<div style="minimumflow-x:auto;">
 			<table id="myTable" class="w3-table-all">
 				<tr style="background-color: #43c1c3; color: white;">
 					<th nowrap onclick="sortTable(0)">순위</th>

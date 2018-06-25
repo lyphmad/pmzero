@@ -33,7 +33,7 @@ while ($rowitem = $result->fetch_array()) {
 				</div>
 			</div>
 
-			<form method="get" action="record.php">
+			<form method="get" action="record.php" onsubmit="return validate()">
 				<div class="row">
 					<div class="w3-container w3-cell wind"><h3>동</h3></div>
 					<div class="w3-container w3-cell" style="width:130px;">
@@ -102,7 +102,7 @@ while ($rowitem = $result->fetch_array()) {
 				<div class="row">
 					<div class="w3-container w3-cell" style="padding-right: 155px;"><h3>공탁</h3></div>
 					<div class="w3-container w3-cell w3-mobile">
-						<input id="leftover" name="leftover" class="w3-input" type="text" onblur="getTotal()" value="0" autocomplete="off">
+						<input id="leftover" name="leftover" class="w3-input" type="text" onblur="getTotal()" placeholder="0" autocomplete="off">
 					</div>
 				</div>
 
