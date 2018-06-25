@@ -34,16 +34,25 @@
 
 				<?php
 				// Create connection
-				$conn = new mysqli("localhost", "openvpnas", "", "pmzero");
+				$conn = new mysqli("localhost", "openvpnas", "", "pmzero_test");
 				// Check connection
 				if ($conn->connect_error) {
 						die("Connection failed: " . $conn->connect_error);
 				}
 				$conn->set_charset("utf8");
 
-				$start = $_GET['startID'];
-				$end = $_GET['endID'];
-				$query = "SELECT * FROM Games WHERE valid = true AND gameID <= $end AND gameID >= $start ORDER BY gameTime DESC";
+				$type = $_GET['filter_type'];
+		
+				if (strcmp($type, "date") == 0) {
+					$start = $_GET['start'];
+					$end = $_GET['end'];
+					$query = "SELECT * FROM Games WHERE valid = true AND gameTime <= (SELECT DATE_ADD('$end', INTERVAL 1 DAY)) AND gameTime >= '$start' ORDER BY gameTime DESC;";
+				}
+				else {
+					$start = $_GET['startID'];
+					$end = $_GET['endID'];
+					$query = "SELECT * FROM Games WHERE valid = true AND gameID <= $end AND gameID >= $start ORDER BY gameTime DESC;";
+				}
 				$games = $conn->query($query);
 				$num = $games->num_rows;
 

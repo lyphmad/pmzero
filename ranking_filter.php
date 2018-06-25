@@ -11,11 +11,11 @@
 			<div class="w3-card" style="background-color: #001c54; color: white" scrolling="NO">
 				<button class="w3-button w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
 				<div class="w3-container">
-					<h1>기간 중 기록</h1>
+					<h1>기간 랭킹</h1>
 				</div>
 			</div>
 
-			<form method="GET" action="games_filtered.php">
+			<form method="GET" action="ranking_filtered.php">
 				<input name="filter_type" type="text" value="date" hidden>
 				<div class="w3-container" style="margin-top: 10px;">
 					일자를 입력해 주세요.<br>
@@ -30,7 +30,7 @@
 				</div>
 			</form>
 
-			<form method="GET" action="games_filtered.php">
+			<form method="GET" action="ranking_filtered.php">
 				<input name="filter_type" type="text" value="id" hidden>
 				<div class="w3-container" style="margin-top: 50px;">
 					대국 번호를 입력하여 주세요.<br>
