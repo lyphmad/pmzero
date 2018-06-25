@@ -35,13 +35,13 @@
 			$end = $_GET['endID'];
 			$query = "SELECT * FROM Games WHERE valid = true AND gameID <= $end AND gameID >= $start ORDER BY gameTime DESC;";
 		}
-		elseif ($filter_type === "none") {
-			$query = "SELECT * FROM Games WHERE valid = true;";
-		}
-		else { //none
+		elseif ($filter_type === "date") { //none
 			$start = $_GET['start'];
 			$end = $_GET['end'];
 			$query = "SELECT * FROM Games WHERE valid = true AND gameTime <= (SELECT DATE_ADD('$end', INTERVAL 1 DAY)) AND gameTime >= '$start' ORDER BY gameTime DESC;";
+		}
+		else { //none
+			$query = "SELECT * FROM Games WHERE valid = true;";
 		}
 		$games = $conn->query($query);
 
