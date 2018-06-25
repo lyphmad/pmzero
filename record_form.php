@@ -1,6 +1,6 @@
 <?php
 // Create connection
-$conn = new mysqli("localhost", "openvpnas", "", "pmzero");
+$conn = new mysqli("localhost", "openvpnas", "", "pmzero_test");
 // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
@@ -172,6 +172,8 @@ while ($rowitem = $result->fetch_array()) {
 					document.getElementById('total').innerHTML = str;
 					document.getElementById("submit").disabled = true;
 				}
+
+				return tot;
 			}
 
 			function validate() {
@@ -179,6 +181,7 @@ while ($rowitem = $result->fetch_array()) {
 					alert("점수 합계를 확인하세요");
 					return false;
 				}
+				else { return true; }
 			}
 		</script>
 	</body>
