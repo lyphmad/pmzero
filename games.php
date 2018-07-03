@@ -75,8 +75,6 @@ if ($individual === "on" && $opponent === "on") { //전적 (등수) 출력
 
 		$member_rank[$rank[$member_wind]]++;
 		$opponent_rank[$rank[$opponent_wind]]++;
-		$member_score += $score[$member_wind];
-		$opponent_score += $score[$opponent_wind];
 		$num++;
 	}
 	$player_name[$memberID] = $conn->query ("SELECT `name` FROM Members WHERE `memberID` = " . $memberID . ";")->fetch_array()['name'];
@@ -146,13 +144,6 @@ if ($individual === "on" && $opponent === "on") { //전적 (등수) 출력
 				<td nowrap><?=$member_avg?></td>
 				<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>
 				<td nowrap><?=$opponent_avg?></td>
-			</tr>
-			<tr>
-				<td nowrap>승점</td>
-				<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>
-				<td nowrap><?=$member_score?></td>
-				<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>
-				<td nowrap><?=$opponent_score?></td>
 			</tr>
 		</table>
 		<?php } ?>
