@@ -26,7 +26,7 @@ $conn->close();
 	<meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="w3.css">
 
-	<body>    
+	<body onload="getTotal()">    
 		<div w3-include-html="menubar.html"></div>
 
 		<div class="w3-main" style="margin-left:200px">

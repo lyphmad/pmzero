@@ -49,7 +49,7 @@ while ($rowitem = $result->fetch_array()) {
 					양 끝 대국을 포함합니다.<br>
 					<input id="startID" name="startID" type="number" style="margin-top: 3px;"> ~ <input id="endID" name="endID" type="number"> <br> <br>
 
-					<input type="checkbox" name="ind"><b style="margin-bottom:10px;"> 개인 전적: </b> 이름
+					<input type="checkbox" name="ind"><b> 개인 전적: </b>
 					<select name="memberID" style="margin-left:10px; width:100px;">
 						<option disabled selected> --- </option>
 						<?php
@@ -58,6 +58,17 @@ while ($rowitem = $result->fetch_array()) {
 						}
 						?>
 					</select>	<br>
+
+					<input type="checkbox" name="opponent"><b style="margin-bottom:10px;"> 상대 전적: </b>
+					<select name="opponentID" style="margin-top:5px; margin-left:10px; width:100px;">
+						<option disabled selected> --- </option>
+						<?php
+						foreach ($members as $ID => $name) {
+							echo '<option value=' . $ID . '>' . $name . '</option>';
+						}
+						?>
+					</select>	<br>
+
 					<input type="submit" value="제출" style="margin-top: 20px;">
 				</div>
 			</form>
