@@ -18,15 +18,15 @@ if ($individual === "on") {
 if ($type === "date") {
 	$start = $_GET['start'];
 	$end = $_GET['end'];
-	$query = "SELECT * FROM Games WHERE valid = true AND gameTime <= (SELECT DATE_ADD('$end', INTERVAL 1 DAY)) AND gameTime >= '$start' ORDER BY gameTime DESC;";
+	$query = "SELECT * FROM Games WHERE valid = true AND gameTime <= (SELECT DATE_ADD('$end', INTERVAL 1 DAY)) AND gameTime >= '$start' ORDER BY gameID DESC;";
 }
 elseif ($type === "ID") {
 	$start = $_GET['startID'];
 	$end = $_GET['endID'];
-	$query = "SELECT * FROM Games WHERE valid = true AND gameID <= $end AND gameID >= $start ORDER BY gameTime DESC;";
+	$query = "SELECT * FROM Games WHERE valid = true AND gameID <= $end AND gameID >= $start ORDER BY gameID DESC;";
 }
 else { //none
-	$query = "SELECT * FROM Games WHERE valid = true ORDER BY gameTime DESC;";
+	$query = "SELECT * FROM Games WHERE valid = true ORDER BY gameID DESC;";
 }
 $games = $conn->query($query);
 $num = 0;
