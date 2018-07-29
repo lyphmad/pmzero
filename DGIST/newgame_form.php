@@ -21,6 +21,9 @@ while ($rowitem = $result->fetch_array()) {
 	<title>UNIST 마작 소모임 ±0</title>
 	<meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="w3.css">
+	<head>
+		<script src="math.js" type="text/javascript"></script>
+	</head>
 
 	<body>    
 		<div w3-include-html="menubar.html"></div>
@@ -149,11 +152,11 @@ while ($rowitem = $result->fetch_array()) {
 			}
 
 			function getTotal() {
-				var east = parseInt(document.getElementById('eastScore').value);
-				var south = parseInt(document.getElementById('southScore').value);
-				var west = parseInt(document.getElementById('westScore').value);
-				var north = parseInt(document.getElementById('northScore').value);
-				var left = parseInt(document.getElementById('leftover').value);
+				var east = math.eval(document.getElementById('eastScore').value);
+				var south = math.eval(document.getElementById('southScore').value);
+				var west = math.eval(document.getElementById('westScore').value);
+				var north = math.eval(document.getElementById('northScore').value);
+				var left = math.eval(document.getElementById('leftover').value);
 
 				var tot = 0;
 				if (east) { tot += east; }
