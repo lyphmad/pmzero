@@ -189,7 +189,7 @@ $conn->close();
 			if (left) { tot += left; }
 			document.getElementById('total').value = tot;
 
-			if (tot == 100000) {
+			if (tot == 100000 || tot == 120000) {
 				document.getElementById("submit").disabled = false;
 				document.getElementById('total').value = tot;
 			}
@@ -208,7 +208,8 @@ $conn->close();
 		}
 
 		function validate() {
-			if (getTotal() != 100000) {
+			total = getTotal ();
+			if (total != 100000 && total != 120000) {
 				alert("점수 합계를 확인하세요");
 				return false;
 			}

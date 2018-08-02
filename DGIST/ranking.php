@@ -107,24 +107,26 @@
 			if ($score[1] < $score[3]) { $rank[1]++; } else { $rank[3]++; }
 			if ($score[2] < $score[3]) { $rank[2]++; } else { $rank[3]++; }
 
-			for ($i = 0; $i < 4; $i++) {
-				if ($rank[$i] == 1) {
-					$player_score[$playerID[$i]] += ($score[$i] + 10000) / 1000;
-					$player_info[$playerID[$i]]['rank'][1]++;
-				}
-				elseif ($rank[$i] == 2) {
-					$player_score[$playerID[$i]] += ($score[$i] - 20000) / 1000;
-					$player_info[$playerID[$i]]['rank'][2]++;
-				}
-				elseif ($rank[$i] == 3) {
-					$player_score[$playerID[$i]] += ($score[$i] - 40000) / 1000;
-					$player_info[$playerID[$i]]['rank'][3]++;
-				}
-				elseif ($rank[$i] == 4) {
-					$player_score[$playerID[$i]] += ($score[$i] - 50000) / 1000;
-					$player_info[$playerID[$i]]['rank'][4]++;
-				}
-			} //우마: 10-30
+			if ($score[0] + $score[1] + $score[2] + $score[3] == 100000) {
+				for ($i = 0; $i < 4; $i++) {
+					if ($rank[$i] == 1) {
+						$player_score[$playerID[$i]] += ($score[$i] + 10000) / 1000;
+						$player_info[$playerID[$i]]['rank'][1]++;
+					}
+					elseif ($rank[$i] == 2) {
+						$player_score[$playerID[$i]] += ($score[$i] - 20000) / 1000;
+						$player_info[$playerID[$i]]['rank'][2]++;
+					}
+					elseif ($rank[$i] == 3) {
+						$player_score[$playerID[$i]] += ($score[$i] - 40000) / 1000;
+						$player_info[$playerID[$i]]['rank'][3]++;
+					}
+					elseif ($rank[$i] == 4) {
+						$player_score[$playerID[$i]] += ($score[$i] - 50000) / 1000;
+						$player_info[$playerID[$i]]['rank'][4]++;
+					}
+				} // 디지스트: 오카/우마 없음, 유니스트: 오카 20 우마 10 - 20
+			}
 		}
 
 		arsort ($player_score);
