@@ -131,19 +131,19 @@
 			elseif ($sum == 120000) {
 				for ($i = 0; $i < 4; $i++) {
 					if ($rank[$i] == 1) {
-						$player_score[$playerID[$i]] += $score[$i] / 1000;
+						$player_score[$playerID[$i]] += ($score[$i] - 30000) / 1000;
 						$player_info[$playerID[$i]]['rank'][1]++;
 					}
 					elseif ($rank[$i] == 2) {
-						$player_score[$playerID[$i]] += $score[$i] / 1000;
+						$player_score[$playerID[$i]] += ($score[$i] - 30000) / 1000;
 						$player_info[$playerID[$i]]['rank'][2]++;
 					}
 					elseif ($rank[$i] == 3) {
-						$player_score[$playerID[$i]] += $score[$i] / 1000;
+						$player_score[$playerID[$i]] += ($score[$i] - 30000) / 1000;
 						$player_info[$playerID[$i]]['rank'][3]++;
 					}
 					elseif ($rank[$i] == 4) {
-						$player_score[$playerID[$i]] += $score[$i] / 1000;
+						$player_score[$playerID[$i]] += ($score[$i] - 30000) / 1000;
 						$player_info[$playerID[$i]]['rank'][4]++;
 					}
 				}
