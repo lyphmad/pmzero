@@ -165,7 +165,7 @@ while ($rowitem = $result->fetch_array()) {
 				if (north) { tot += north; }
 				if (left) { tot += left; }
 
-				if (tot == 100000) {
+				if (tot == 100000 || tot == 120000) {
 					document.getElementById("submit").disabled = false;
 					document.getElementById('total').value = tot;
 				}
@@ -180,7 +180,8 @@ while ($rowitem = $result->fetch_array()) {
 			}
 
 			function validate() {
-				if (getTotal() != 100000) {
+				var tot = getTotal();
+				if (tot != 100000 || tot != 120000) {
 					alert("점수 합계를 확인하세요");
 					return false;
 				}
