@@ -159,11 +159,27 @@ while ($rowitem = $result->fetch_array()) {
 				var left = math.eval(document.getElementById('leftover').value);
 
 				var tot = 0;
-				if (east) { tot += east; }
-				if (south) { tot += south; }
-				if (west) { tot += west; }
-				if (north) { tot += north; }
-				if (left) { tot += left; }
+
+				if (east) {
+					tot += east;
+					document.getElementById('eastScore').value = east;
+				}
+				if (south) {
+					tot += south;
+					document.getElementById('southScore').value = south;
+				}
+				if (west) {
+					tot += west;
+					document.getElementById('westScore').value = west;
+				}
+				if (north) {
+					tot += north;
+					document.getElementById('northScore').value = north;
+				}
+				if (left) {
+					tot += left;
+					document.getElementById('leftover').value = left;
+				}
 
 				if (tot == 100000 || tot == 120000) {
 					document.getElementById("submit").disabled = false;

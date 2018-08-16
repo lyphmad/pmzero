@@ -25,6 +25,9 @@ $conn->close();
 	<title>UNIST 마작 소모임 ±0</title>
 	<meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="w3.css">
+	<head>
+		<script src="math.js" type="text/javascript"></script>
+	</head>
 
 	<body onload="getTotal()">    
 		<div w3-include-html="menubar.html"></div>
@@ -175,19 +178,34 @@ $conn->close();
 		}
 
 		function getTotal() {
-			var east = parseInt(document.getElementById('eastScore').value);
-			var south = parseInt(document.getElementById('southScore').value);
-			var west = parseInt(document.getElementById('westScore').value);
-			var north = parseInt(document.getElementById('northScore').value);
-			var left = parseInt(document.getElementById('leftover').value);
+				var east = math.eval(document.getElementById('eastScore').value);
+				var south = math.eval(document.getElementById('southScore').value);
+				var west = math.eval(document.getElementById('westScore').value);
+				var north = math.eval(document.getElementById('northScore').value);
+				var left = math.eval(document.getElementById('leftover').value);
 
-			var tot = 0;
-			if (east) { tot += east; }
-			if (south) { tot += south; }
-			if (west) { tot += west; }
-			if (north) { tot += north; }
-			if (left) { tot += left; }
-			document.getElementById('total').value = tot;
+				var tot = 0;
+
+				if (east) {
+					tot += east;
+					document.getElementById('eastScore').value = east;
+				}
+				if (south) {
+					tot += south;
+					document.getElementById('southScore').value = south;
+				}
+				if (west) {
+					tot += west;
+					document.getElementById('westScore').value = west;
+				}
+				if (north) {
+					tot += north;
+					document.getElementById('northScore').value = north;
+				}
+				if (left) {
+					tot += left;
+					document.getElementById('leftover').value = left;
+				}
 
 			if (tot == 100000) {
 				document.getElementById("submit").disabled = false;
