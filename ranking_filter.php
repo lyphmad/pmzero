@@ -22,15 +22,18 @@
 					<div style="color:red;"> 검색 후에 표시되는 회원 간의 경기 수는 설정값보다 작을 수 있습니다. </div> <br>
 
 
-					<b> 반영 기간 </b><br> <br>
+					<b> 반영 기간 </b><br>
 					<input type="radio" name="filter_type" value="date" onclick="date_checked()" checked> 날짜로 <br>
 					<input id="start" name="start" type="date" style="margin-top: 3px;"> ~ <input id="end" name="end" type="date"> <br>
+
 					<button type="button" onclick="yesterday()" style="margin-top: 10px;">어제부터</button>
 					<button type="button" onclick="week()" style="margin-top: 10px;">1주</button>
 					<button type="button" onclick="month()" style="margin-top: 10px;">1개월</button>
-					<button type="button" onclick="this_semester()" style="margin-top: 10px;">이번 학기</button>
-					<button type="button" onclick="last_semester()" style="margin-top: 10px;">지난 학기</button>
-					<button type="button" onclick="firstgame()" style="margin-top: 10px;">첫 경기부터</button> <br> <br>
+					<button type="button" onclick="firstgame()" style="margin-top: 10px;">첫 경기부터</button> <br>
+
+					<button type="button" onclick="semester_before_last()" style="margin-top: 10px;">2018년 1학기</button>
+					<button type="button" onclick="last_semester()" style="margin-top: 10px;">2018년 여름학기</button>
+					<button type="button" onclick="this_semester()" style="margin-top: 10px;">2018년 2학기</button><br><br><br>
 
 					<input type="radio" name="filter_type" value="ID" onclick="ID_checked()"> 대국 번호로 <br>
 					양 끝 대국을 포함합니다.<br>
@@ -90,15 +93,24 @@
 				document.getElementById('end').value = "<?=date("Y-m-d")?>";
 			}
 
+			/* this_semester, last_semester, semester_before_last
+			 * We need to update these value manually at the start of each semester.
+			 * This dates are determined by university policy, so these cannot be implemented with automated algorithm. */
+
 			function this_semester() {
-				document.getElementById("start").value = "2018-06-18";
+				document.getElementById("start").value = "2018-08-27";
 				document.getElementById('end').value = "<?=date("Y-m-d")?>";
 			}
 
 			function last_semester() {
+				document.getElementById("start").value = "2018-06-18";
+				document.getElementById("end").value = "2018-08-26";
+			}
+
+			function semester_before_last() {
 				document.getElementById("start").value = "2018-02-26";
 				document.getElementById("end").value = "2018-06-17";
-			} // better need an algorithm for these two... or maybe not
+			}
 		</script>
 	</body>
 </html>
