@@ -61,7 +61,7 @@ $conn->close();
 						</select>
 					</div>
 					<div class="w3-container w3-cell w3-mobile">
-						<input id="eastScore" name="eastScore" class="w3-input" type="text" onblur="getTotal()" value="<?=$rowitem['eastScore']?>" autocomplete="off">
+						<input id="eastScore" name="eastScore" class="w3-input" type="number" onblur="getTotal()" value="<?=$rowitem['eastScore']?>" autocomplete="off">
 					</div>
 				</div>
 				
@@ -82,7 +82,7 @@ $conn->close();
 						</select>
 					</div>
 					<div class="w3-container w3-cell w3-mobile">
-						<input id="southScore" name="southScore" class="w3-input" type="text" onblur="getTotal()" value="<?=$rowitem['southScore']?>" autocomplete="off">
+						<input id="southScore" name="southScore" class="w3-input" type="number" onblur="getTotal()" value="<?=$rowitem['southScore']?>" autocomplete="off">
 					</div>
 				</div>
 				
@@ -103,7 +103,7 @@ $conn->close();
 						</select>
 					</div>
 					<div class="w3-container w3-cell w3-mobile">
-						<input id="westScore" name="westScore" class="w3-input" type="text" onblur="getTotal()" value="<?=$rowitem['westScore']?>" autocomplete="off">
+						<input id="westScore" name="westScore" class="w3-input" type="number" onblur="getTotal()" value="<?=$rowitem['westScore']?>" autocomplete="off">
 					</div>
 				</div>
 				
@@ -124,14 +124,14 @@ $conn->close();
 						</select>
 					</div>
 					<div class="w3-container w3-cell w3-mobile">
-						<input id="northScore" name="northScore" class="w3-input" type="text" onblur="getTotal()" value="<?=$rowitem['northScore']?>" autocomplete="off">
+						<input id="northScore" name="northScore" class="w3-input" type="number" onblur="getTotal()" value="<?=$rowitem['northScore']?>" autocomplete="off">
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="w3-container w3-cell" style="padding-right: 155px;"><h3>공탁</h3></div>
 					<div class="w3-container w3-cell w3-mobile">
-						<input id="leftover" name="leftover" class="w3-input" type="text" onblur="getTotal()" value="<?=$rowitem['leftover']?>" autocomplete="off">
+						<input id="leftover" name="leftover" class="w3-input" type="number" onblur="getTotal()" value="<?=$rowitem['leftover']?>" autocomplete="off">
 					</div>
 				</div>
 
