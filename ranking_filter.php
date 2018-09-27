@@ -21,8 +21,7 @@
 					기간 내의 총 대국 수가 설정값 이상인 회원간의 경기만 표시합니다.<br>
 					<div style="color:red;"> 검색 후에 표시되는 회원 간의 경기 수는 설정값보다 작을 수 있습니다. </div> <br>
 
-
-					<b> 반영 기간 </b><br>
+					<b> 반영 기간 </b><br><br>
 					<input type="radio" name="filter_type" value="date" onclick="date_checked()" checked> 날짜로 <br>
 					<input id="start" name="start" type="date" style="margin-top: 3px;"> ~ <input id="end" name="end" type="date"> <br>
 
