@@ -1,13 +1,14 @@
 <?php
 // Create connection
 $conn = new mysqli("localhost", "openvpnas", "", "pmzero");
+$conn->set_charset("utf8");
+
 // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$conn->set_charset("utf8");
-
+// Get members
 $result = $conn->query("SELECT * FROM Members ORDER BY `name`;");
 
 $members = array();

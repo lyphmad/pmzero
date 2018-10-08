@@ -14,8 +14,8 @@ $sql = "INSERT INTO Members (`name`) VALUES ('" . $newName . "');";
 
 if ($conn->query($sql) === TRUE) {
 	echo "<script>
-	alert('등록되었습니다.');
-	window.location.href='games.php';
+		alert('등록되었습니다.');
+		window.location.href='games.php';
 	</script>";
 } else {
 	die("Error: " . $sql . "<br>" . $conn->error);

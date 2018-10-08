@@ -1,11 +1,12 @@
 <?php
 // Create connection
 $conn = new mysqli("localhost", "openvpnas", "", "pmzero");
+$conn->set_charset("utf8");
+
 // Check connection
 if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
-$conn->set_charset("utf8");
 
 $type = $_GET['filter_type'];
 $individual = $_GET['ind'];
@@ -159,9 +160,7 @@ if ($individual === "on" && $opponent === "on") { //전적 (등수) 출력
 					<th nowrap>3위</th>
 					<th nowrap>4위</th> 
 					<th nowrap style="border-left: 1px solid black; margin-right: 5px;"></th>
-					<th nowrap>공탁점</th>   
-					<th nowrap style="border-left: 1px solid black; margin-right: 5px;"></th>
-					<th nowrap></th>
+					<th nowrap>공탁점</th>
 				</tr>
 
 				<?php
@@ -213,8 +212,6 @@ if ($individual === "on" && $opponent === "on") { //전적 (등수) 출력
 					echo '<td nowrap>[' . $windName[$fourthWind] . '] ' . $player_name[$playerID[$fourthWind]] . ': ' . $score[$fourthWind]  . '</td>';
 					echo '<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>';
 					echo '<td nowrap>' . $rowitem['leftover']  . '</td>';
-					echo '<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>';
-					echo '<td nowrap><a href="edit_form.php?id=' . $rowitem['gameID'] . '">수정</a></td>';
 					echo '</tr>';
 					$num++;
 				}

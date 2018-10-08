@@ -1,3 +1,14 @@
+<?php
+// Create connection
+$conn = new mysqli("localhost", "openvpnas", "", "pmzero");
+$conn->set_charset("utf8");
+
+// Check connection
+if ($conn->connect_error) {
+	die("Connection failed: " . $conn->connect_error);
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <title>UNIST 마작 소모임 ±0</title>
@@ -16,14 +27,6 @@
 		</div>
 
 		<?php
-		// Create connection
-		$conn = new mysqli("localhost", "openvpnas", "", "pmzero");
-		// Check connection
-		if ($conn->connect_error) {
-				die("Connection failed: " . $conn->connect_error);
-		}
-		$conn->set_charset("utf8");
-
 		$player_score = array();
 		$player_info = array();
 
@@ -33,15 +36,15 @@
 		if ($filter_type === "ID") {
 			$start = $_GET['startID'];
 			$end = $_GET['endID'];
-			$query = "SELECT * FROM Games WHERE valid = true AND gameID <= $end AND gameID >= $start ORDER BY gameTime DESC;";
+			$query = "SELECT * FROM Games WHERE valid = true AND gameID <= $end AND gameID >= $start AND no_ranking = false ORDER BY gameTime DESC;";
 		}
 		elseif ($filter_type === "date") { //none
 			$start = $_GET['start'];
 			$end = $_GET['end'];
-			$query = "SELECT * FROM Games WHERE valid = true AND gameTime <= (SELECT DATE_ADD('$end', INTERVAL 1 DAY)) AND gameTime >= '$start' ORDER BY gameTime DESC;";
+			$query = "SELECT * FROM Games WHERE valid = true AND gameTime <= (SELECT DATE_ADD('$end', INTERVAL 1 DAY)) AND gameTime >= '$start' AND no_ranking = false ORDER BY gameTime DESC;";
 		}
 		else { //none
-			$query = "SELECT * FROM Games WHERE valid = true;";
+			$query = "SELECT * FROM Games WHERE valid = true AND no_ranking = false;";
 		}
 		$games = $conn->query($query);
 

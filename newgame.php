@@ -1,12 +1,12 @@
 <?php
 // Create connection
 $conn = new mysqli("localhost", "openvpnas", "", "pmzero");
+$conn->set_charset("utf8");
+
 // Check connection
 if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
-
-$conn->set_charset("utf8");
 
 $gameID = $_GET["gameID"];
 $eastID = $_GET["eastID"];
@@ -45,12 +45,17 @@ else {
 	$leftover = $_GET["leftover"];
 }
 
+if ($_GET['no_ranking'] === "on") {
+	$no_ranking = 1;
+}
+else { $no_ranking = 0; }
+
 $sql = "INSERT INTO Games SET
 	eastID = $eastID, eastScore = $eastScore,
 	southID = $southID, southScore = $southScore,
 	westID = $westID, westScore = $westScore,
 	northID = $northID, northScore = $northScore,
-	leftover = $leftover";
+	leftover = $leftover, no_ranking = $no_ranking;";
 
 if ($conn->query($sql) === TRUE) {
 	echo "<script>

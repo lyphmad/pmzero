@@ -1,3 +1,14 @@
+<?php
+// Create connection
+$conn = new mysqli("localhost", "openvpnas", "", "pmzero");
+$conn->set_charset("utf8");
+
+// Check connection
+if ($conn->connect_error) {
+	die("Connection failed: " . $conn->connect_error);
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <title>UNIST 마작 소모임 ±0</title>
@@ -13,16 +24,9 @@
 			<div class="w3-container">
 				<h1>게시판</h1>
 			</div>
-		</div>		
+		</div>
+		
 		<?php
-		// Create connection
-		$conn = new mysqli("localhost", "openvpnas", "", "pmzero");
-		// Check connection
-		if ($conn->connect_error) {
-				die("Connection failed: " . $conn->connect_error);
-		}
-		$conn->set_charset("utf8");
-
 		$articleID = $_GET['id'];
 
 		$article = $conn->query("SELECT title, content FROM Bulletin WHERE articleID = $articleID;")->fetch_array();
@@ -30,6 +34,7 @@
 		$content = $article['content'];
 		$conn->close();
 		?>
+		
 		<div class="w3-container">
 			<h3><?=$title?></h3>
 			<?php

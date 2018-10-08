@@ -1,13 +1,14 @@
 <?php
 // Create connection
 $conn = new mysqli("localhost", "openvpnas", "", "pmzero");
+$conn->set_charset("utf8");
+
 // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$conn->set_charset("utf8");
-
+// Get members
 $result = $conn->query("SELECT * FROM Members ORDER BY `name`;");
 
 $members = array();
@@ -113,6 +114,12 @@ while ($rowitem = $result->fetch_array()) {
 					<div class="w3-container w3-cell" style="padding-right: 155px;"><h3>합계</h3></div>
 					<div class="w3-container w3-cell w3-mobile">
 						<output id="total" type="text" style="width:100%;" value="0">
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="w3-container w3-cell" style="padding-right: 155px;">
+						<input type="checkbox" name="no_ranking"> 랭킹 계산에서 제외
 					</div>
 				</div>
 				

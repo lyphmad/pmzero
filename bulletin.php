@@ -1,3 +1,14 @@
+<?php
+// Create connection
+$conn = new mysqli("localhost", "openvpnas", "", "pmzero");
+$conn->set_charset("utf8");
+
+// Check connection
+if ($conn->connect_error) {
+	die("Connection failed: " . $conn->connect_error);
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <title>UNIST 마작 소모임 ±0</title>
@@ -23,19 +34,9 @@
 					<th nowrap style="border-left: 1px solid black; margin-right: 5px;">
 					<th nowrap>제목</th>
 					<th nowrap style="border-left: 1px solid black; margin-right: 5px;">
-					<th nowrap></th>
-					<th nowrap></th>
 				</tr>
 
 				<?php
-				// Create connection
-				$conn = new mysqli("localhost", "openvpnas", "", "pmzero");
-				// Check connection
-				if ($conn->connect_error) {
-						die("Connection failed: " . $conn->connect_error);
-				}
-				$conn->set_charset("utf8");
-
 				$articles = $conn->query("SELECT articleID, title, uploadTime FROM Bulletin WHERE valid = true ORDER BY articleID DESC;");
 				while ($rowitem = $articles->fetch_array()) {
 					echo '<tr>';
@@ -44,8 +45,6 @@
 					echo '<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>';
 					echo '<td nowrap><a href="bulletin_show.php?id=' . $rowitem['articleID'] . '">' . $rowitem['title'] . '</td>';
 					echo '<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>';
-					echo '<td nowrap><a href="bulletin_edit_form.php?id=' . $rowitem['articleID'] . '">수정</a></td>';
-					echo '<td nowrap style="color: red" onclick="delete_article(' . $rowitem['articleID'] . ')"><a href="#">삭제</a></td>';
 					echo '</tr>';
 				}
 				$conn->close();
