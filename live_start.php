@@ -30,7 +30,7 @@ $conn->close();
 		<div class="w3-main" style="margin-left:200px">
 			<div class="w3-card" style="background-color: #001c54; color: white;">
 				<button class="w3-button w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
-				<div class="w3-container" style="margin-left:10px;">
+				<div class="w3-container">
 					<h1>자리 배치</h1>
 				</div>
 			</div>

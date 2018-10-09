@@ -34,7 +34,7 @@ while ($rowitem = $result->fetch_array()) {
 				</div>
 			</div>
 
-			<form method="GET" action="ranking.php">
+			<form method="GET" action="games.php">
 				<div style="margin-top:10px; margin-left:10px; margin-right:10px;">
 					<b> 반영 기간 </b><br><br>
 					<input type="radio" name="filter_type" value="date" onclick="date_checked()" checked> 날짜로 <br>
