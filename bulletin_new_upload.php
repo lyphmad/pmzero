@@ -49,10 +49,10 @@ $content = $_POST['content'];
 $sql = "INSERT INTO Bulletin (title, content) VALUES ('" . $title. "', '" . $content . "');";
 
 if ($conn->query($sql) === TRUE) {
-	echo '<script>'
-		echo "alert('등록되었습니다.');"
-		echo "window.location.href='bulletin.php';"
-	echo "</script>"
+	echo '<script>';
+		echo "alert('등록되었습니다.');";
+		echo "window.location.href='bulletin.php';";
+	echo "</script>";
 } else {
 	die("Error: " . $sql . "<br>" . $conn->error);
 }
