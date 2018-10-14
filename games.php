@@ -217,9 +217,11 @@ if ($individual === "on" && $opponent === "on") { //전적 (등수) 출력
 						<th nowrap>1위</th>
 						<th nowrap>2위</th>
 						<th nowrap>3위</th>
-						<th nowrap>4위</th> 
+						<th nowrap>4위</th>
 						<th nowrap style="border-left: 1px solid black; margin-right: 5px;"></th>
 						<th nowrap>공탁점</th>
+						<th nowrap style="border-left: 1px solid black; margin-right: 5px;"></th>
+						<th nowrap>도라 갯수</th>
 					</tr>
 
 					<?php					
@@ -271,6 +273,8 @@ if ($individual === "on" && $opponent === "on") { //전적 (등수) 출력
 						echo '<td nowrap>[' . $windName[$fourthWind] . '] ' . $player_name[$playerID[$fourthWind]] . ': ' . $score[$fourthWind]  . '</td>';
 						echo '<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>';
 						echo '<td nowrap>' . $rowitem['leftover']  . '</td>';
+						echo '<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>';
+						echo '<td nowrap>' . $rowitem['dora']  . '</td>';
 						echo '</tr>';
 					}
 					$conn->close();

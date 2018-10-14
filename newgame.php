@@ -50,12 +50,14 @@ if ($_GET['no_ranking'] === "on") {
 }
 else { $no_ranking = 0; }
 
+$dora = $_GET['dora'];
+
 $sql = "INSERT INTO Games SET
 	eastID = $eastID, eastScore = $eastScore,
 	southID = $southID, southScore = $southScore,
 	westID = $westID, westScore = $westScore,
 	northID = $northID, northScore = $northScore,
-	leftover = $leftover, no_ranking = $no_ranking;";
+	leftover = $leftover, no_ranking = $no_ranking, dora = $dora;";
 
 if ($conn->query($sql) === TRUE) {
 	echo "<script>

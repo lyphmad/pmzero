@@ -33,18 +33,16 @@ if ($conn->connect_error) {
 					<th nowrap>작성 일시</th>
 					<th nowrap style="border-left: 1px solid black; margin-right: 5px;">
 					<th nowrap>제목</th>
-					<th nowrap style="border-left: 1px solid black; margin-right: 5px;">
 				</tr>
 
 				<?php
 				$articles = $conn->query("SELECT articleID, title, uploadTime FROM Bulletin WHERE valid = true ORDER BY articleID DESC;");
 				while ($rowitem = $articles->fetch_array()) {
 					echo '<tr>';
-					echo '<td nowrap>' . $rowitem['articleID'] . '</td>';
-					echo '<td nowrap>' . $rowitem['uploadTime'] . '</td>';
-					echo '<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>';
-					echo '<td nowrap><a href="bulletin_show.php?id=' . $rowitem['articleID'] . '">' . $rowitem['title'] . '</td>';
-					echo '<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>';
+						echo '<td nowrap>' . $rowitem['articleID'] . '</td>';
+						echo '<td nowrap>' . $rowitem['uploadTime'] . '</td>';
+						echo '<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>';
+						echo '<td nowrap><a href="bulletin_show.php?id=' . $rowitem['articleID'] . '">' . $rowitem['title'] . '</td>';
 					echo '</tr>';
 				}
 				$conn->close();

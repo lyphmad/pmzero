@@ -111,6 +111,17 @@ while ($rowitem = $result->fetch_array()) {
 				</div>
 
 				<div class="row">
+					<div class="w3-container w3-cell"><h3>도라 갯수</h3></div>
+					<div class="w3-container w3-cell w3-mobile">
+						<input type="radio" id="0" name="dora" value="0" /> 0
+						<input type="radio" id="4" name="dora" value="4" checked /> 4
+						<input type="radio" id="6" name="dora" value="6" /> 6
+						<input type="radio" id="8" name="dora" value="8" /> 8
+						<input type="radio" id="10" name="dora" value="10" /> 10
+					</div>
+				</div>
+
+				<div class="row">
 					<div class="w3-container w3-cell" style="padding-right: 155px;"><h3>합계</h3></div>
 					<div class="w3-container w3-cell w3-mobile">
 						<output id="total" type="text" style="width:100%;" value="0">
