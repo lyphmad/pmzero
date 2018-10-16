@@ -28,6 +28,7 @@
 					<button type="button" onclick="yesterday()" style="margin-top: 10px;">어제부터</button>
 					<button type="button" onclick="week()" style="margin-top: 10px;">1주</button>
 					<button type="button" onclick="month()" style="margin-top: 10px;">1개월</button>
+					<button type="button" onclick="year()" style="margin-top: 10px;">1년</button>
 					<button type="button" onclick="firstgame()" style="margin-top: 10px;">첫 경기부터</button> <br>
 
 					<button type="button" onclick="semester_before_last()" style="margin-top: 10px;">2018년 1학기</button>
@@ -89,6 +90,11 @@
 
 			function month() {
 				document.getElementById("start").value = "<?=date("Y-m-d", strtotime("-1 month"))?>";
+				document.getElementById('end').value = "<?=date("Y-m-d")?>";
+			}
+
+			function year() {
+				document.getElementById("start").value = "<?=date("Y-m-d", strtotime("-1 year"))?>";
 				document.getElementById('end').value = "<?=date("Y-m-d")?>";
 			}
 
