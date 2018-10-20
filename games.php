@@ -222,6 +222,8 @@ if ($individual === "on" && $opponent === "on") { //전적 (등수) 출력
 						<th nowrap>공탁점</th>
 						<th nowrap style="border-left: 1px solid black; margin-right: 5px;"></th>
 						<th nowrap>도라 갯수</th>
+						<th nowrap style="border-left: 1px solid black; margin-right: 5px;"></th>
+						<th nowrap>비고</th>
 					</tr>
 
 					<?php					
@@ -275,6 +277,8 @@ if ($individual === "on" && $opponent === "on") { //전적 (등수) 출력
 						echo '<td nowrap>' . $rowitem['leftover']  . '</td>';
 						echo '<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>';
 						echo '<td nowrap>' . $rowitem['dora']  . '</td>';
+						echo '<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>';
+						echo '<td nowrap>' . $rowitem['etc']  . '</td>';
 						echo '</tr>';
 					}
 					$conn->close();
