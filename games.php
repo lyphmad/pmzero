@@ -264,8 +264,9 @@ if ($individual === "on" && $opponent === "on") { //전적 (등수) 출력
 								$fourthWind = $i;
 							}
 						}
-						if ($sum == 100000) { echo '<tr>'; }
-						else { echo '<tr style="color: red">'; }
+						if ($sum != 100000) { echo '<tr style="color: red">'; }
+						else if ($rowitem['no_ranking']) { echo '<tr style="color: lightgray">'; }
+						else { echo '<tr>'; }
 						echo '<td nowrap>' . $rowitem['gameID'] . '</td>';
 						echo '<td nowrap>' . $rowitem['gameTime'] . '</td>';
 						echo '<td nowrap style="border-left: 1px solid black; margin-right: 5px;"></td>';

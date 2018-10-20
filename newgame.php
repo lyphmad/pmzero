@@ -59,7 +59,7 @@ $sql = "INSERT INTO Games SET
 	westID = $westID, westScore = $westScore,
 	northID = $northID, northScore = $northScore,
 	leftover = $leftover, no_ranking = $no_ranking,
-	dora = $dora, etc = $etc;";
+	dora = $dora, etc = '$etc';";
 
 if ($conn->query($sql) === TRUE) {
 	echo "<script>
