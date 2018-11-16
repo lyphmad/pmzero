@@ -226,8 +226,10 @@ if ($individual === "on" && $opponent === "on") { //전적 (등수) 출력
 						<th nowrap>비고</th>
 					</tr>
 
-					<?php					
+					<?php
+					$games_no = 0;
 					while ($rowitem = $games->fetch_array()) {
+						$games_no++;
 						$playerID = array($rowitem['eastID'], $rowitem['southID'], $rowitem['westID'], $rowitem['northID']);
 						if ($individual === "on") {
 							if ($playerID[0] != $memberID && $playerID[1] != $memberID && $playerID[2] != $memberID && $playerID[3] != $memberID) { continue; }
@@ -264,7 +266,7 @@ if ($individual === "on" && $opponent === "on") { //전적 (등수) 출력
 								$fourthWind = $i;
 							}
 						}
-						if ($sum != 100000) { echo '<tr style="color: red">'; }
+						if ($sum != 100000 && $sum != 120000) { echo '<tr style="color: red">'; }
 						else if ($rowitem['no_ranking']) { echo '<tr style="color: lightgray">'; }
 						else { echo '<tr>'; }
 						echo '<td nowrap>' . $rowitem['gameID'] . '</td>';
@@ -285,7 +287,7 @@ if ($individual === "on" && $opponent === "on") { //전적 (등수) 출력
 					$conn->close();
 					?>
 				</table>
-				<br><div style="text-align:center;"> 결과 총 <?=$num?>개 </div>
+				<br><div style="text-align:center;"> 결과 총 <?=$games_no?>개 </div>
 			</div>
 		</div>
 		<script src="https://www.w3schools.com/lib/w3.js"></script> 
