@@ -46,8 +46,7 @@ while ($rowitem = $result->fetch_array()) {
 					<button type="button" onclick="year()" style="margin-top: 10px;">1년</button>
 					<button type="button" onclick="firstgame()" style="margin-top: 10px;">첫 경기부터</button> <br>
 
-					<button type="button" onclick="semester_before_last()" style="margin-top: 10px;">2018년 1학기</button>
-					<button type="button" onclick="last_semester()" style="margin-top: 10px;">2018년 여름학기</button>
+					<button type="button" onclick="last_semester()" style="margin-top: 10px;">2018년 1학기</button>
 					<button type="button" onclick="this_semester()" style="margin-top: 10px;">2018년 2학기</button><br><br><br>
 
 					<input type="radio" name="filter_type" value="ID" onclick="ID_checked()"> 대국 번호로 <br>
@@ -134,9 +133,10 @@ while ($rowitem = $result->fetch_array()) {
 				document.getElementById('end').value = "<?=date("Y-m-d")?>";
 			}
 
-			/* this_semester, last_semester, semester_before_last
+			/* this_semester, last_semester
 			 * We need to update these value manually at the start of each semester.
-			 * This dates are determined by university policy, so these cannot be implemented with automated algorithm. */
+			 * This dates are determined by university policy,
+			 * so these cannot be implemented with automated algorithm. */
 
 			function this_semester() {
 				document.getElementById("start").value = "2018-08-27";
@@ -144,13 +144,8 @@ while ($rowitem = $result->fetch_array()) {
 			}
 
 			function last_semester() {
-				document.getElementById("start").value = "2018-06-18";
-				document.getElementById("end").value = "2018-08-26";
-			}
-
-			function semester_before_last() {
 				document.getElementById("start").value = "2018-02-26";
-				document.getElementById("end").value = "2018-06-17";
+				document.getElementById("end").value = "2018-08-26";
 			}
 		</script>
 	</body>
