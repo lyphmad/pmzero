@@ -114,10 +114,10 @@ while ($rowitem = $result->fetch_array()) {
 					<div class="w3-container w3-cell"><h3>적도라 갯수</h3></div>
 					<div class="w3-container w3-cell w3-mobile">
 						<input type="radio" id="0" name="dora" value="0" /> 0
+						<input type="radio" id="3" name="dora" value="3" /> 3
 						<input type="radio" id="4" name="dora" value="4" checked /> 4
 						<input type="radio" id="6" name="dora" value="6" /> 6
-						<input type="radio" id="8" name="dora" value="8" /> 8
-						<input type="radio" id="10" name="dora" value="10" /> 10
+						<input type="radio" id="8" name="dora" value="8" /> 8 이상
 					</div>
 				</div>
 
