@@ -1,5 +1,1 @@
-test/
-etc/
-uploads/
-.vscode/
-.htaccess
+index*
