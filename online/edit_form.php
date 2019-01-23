@@ -1,7 +1,7 @@
 <?php
 $gameID = $_GET["id"];
 // Create connection
-$conn = new mysqli("localhost", "openvpnas", "", "online");
+$conn = new mysqli("localhost", "pmzero", "", "online");
 // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);

@@ -1,6 +1,6 @@
 <?php
 // Create connection
-$conn = new mysqli("localhost", "openvpnas", "", "pmzero");
+$conn = new mysqli("localhost", "pmzero", "", "pmzero");
 $conn->set_charset("utf8");
 
 // Check connection
