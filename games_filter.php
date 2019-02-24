@@ -139,13 +139,13 @@ while ($rowitem = $result->fetch_array()) {
 			 * so these cannot be implemented with automated algorithm. */
 
 			function this_semester() {
-				document.getElementById("start").value = "2018-08-27";
+				document.getElementById("start").value = "2019-02-25";
 				document.getElementById('end').value = "<?=date("Y-m-d")?>";
 			}
 
 			function last_semester() {
-				document.getElementById("start").value = "2018-02-26";
-				document.getElementById("end").value = "2018-08-26";
+				document.getElementById("start").value = "2018-08-27";
+				document.getElementById("end").value = "2018-02-24";
 			}
 		</script>
 	</body>
