@@ -197,7 +197,7 @@ while ($rowitem = $result->fetch_array()) {
 
 			function validate() {
 				var tot = getTotal();
-				if (tot != 100000 || tot != 120000) {
+				if (tot != 100000 && tot != 120000) {
 					alert("점수 합계를 확인하세요");
 					return false;
 				}
