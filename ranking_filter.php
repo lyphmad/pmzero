@@ -31,8 +31,8 @@
 					<button type="button" onclick="year()" style="margin-top: 10px;">1년</button>
 					<button type="button" onclick="firstgame()" style="margin-top: 10px;">첫 경기부터</button> <br>
 
-					<button type="button" onclick="last_semester()" style="margin-top: 10px;">2018년 1학기</button>
-					<button type="button" onclick="this_semester()" style="margin-top: 10px;">2018년 2학기</button><br><br><br>
+					<button type="button" onclick="last_semester()" style="margin-top: 10px;">지난 학기</button>
+					<button type="button" onclick="this_semester()" style="margin-top: 10px;">이번 학기</button><br><br><br>
 
 					<input type="radio" name="filter_type" value="ID" onclick="ID_checked()"> 대국 번호로 <br>
 					양 끝 대국을 포함합니다.<br>
@@ -103,13 +103,13 @@
 			 * so these cannot be implemented with automated algorithm. */
 
 			function this_semester() {
-				document.getElementById("start").value = "2018-02-25";
+				document.getElementById("start").value = "2019-02-25";
 				document.getElementById('end').value = "<?=date("Y-m-d")?>";
 			}
 
 			function last_semester() {
 				document.getElementById("start").value = "2018-08-27";
-				document.getElementById("end").value = "2018-02-24";
+				document.getElementById("end").value = "2019-02-24";
 			}
 		</script>
 	</body>
