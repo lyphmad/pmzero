@@ -137,7 +137,7 @@ while ($rowitem = $result->fetch_array()) {
 				<div class="row">
 					<div class="w3-container w3-cell" style="padding-right: 155px;"><h3>비고</h3></div>
 					<div class="w3-container w3-cell w3-mobile">
-						<textarea name="etc" class="w3-mobile" maxlength="10"></textarea>
+						<textarea name="etc" class="w3-mobile" maxlength="100"></textarea>
 					</div>					
 				</div>
 				
