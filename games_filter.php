@@ -136,16 +136,16 @@ while ($rowitem = $result->fetch_array()) {
 			/* this_semester, last_semester
 			 * We need to update these value manually at the start of each semester.
 			 * This dates are determined by university policy,
-			 * so these cannot be implemented with automated algorithm. */
+			 * so these cannot (?) be implemented with automated algorithm. */
 
 			function this_semester() {
-				document.getElementById("start").value = "2019-02-25";
-				document.getElementById('end').value = "<?=date("Y-m-d")?>";
+				document.getElementById("start").value = "2019-09-01";
+				document.getElementById('end').value = "2020-02-29";
 			}
 
 			function last_semester() {
-				document.getElementById("start").value = "2018-08-27";
-				document.getElementById("end").value = "2019-02-24";
+				document.getElementById("start").value = "2019-02-25";
+				document.getElementById("end").value = "2019-08-31";
 			}
 		</script>
 	</body>
